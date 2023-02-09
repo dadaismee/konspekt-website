@@ -1,16 +1,16 @@
 import styled from "styled-components";
 import { colors } from "./ColorStyles";
+import { mediaQueries } from "./GlobalStyles";
 
 export const heading1 = styled.h1`
   font-style: normal;
   font-weight: 700;
-  font-size: 60px; //4vw
+  font-size: 5vw; //4vw
   line-height: 120%;
   color: ${colors.textBlack};
 
-  @media (max-width: 750px) {
+  @media (max-width: ${mediaQueries.tablet}) {
     font-size: 8vw;
-    /* line-height: 100%; */
   }
 `;
 
@@ -33,12 +33,12 @@ export const heading3 = styled.h3`
 export const heading4 = styled.h4`
   font-style: normal;
   font-weight: 700;
-  font-size: 32px; // 2vw
+  font-size: 2vw; // 32px
   line-height: 120%;
   color: ${colors.textBlack};
 
-  @media (max-width: 750px) {
-    font-size: 20px;
+  @media (max-width: ${mediaQueries.tablet}) {
+    font-size: 4vw;
     line-height: 145%;
   }
 `;
