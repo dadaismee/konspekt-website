@@ -4,7 +4,11 @@
 module.exports = {
   siteMetadata: {
     title: `konspekt-web`,
-    siteUrl: `https://www.yourdomain.tld`
+    siteUrl: `https://www.yourdomain.tld`,
   },
-  plugins: ["gatsby-plugin-styled-components", "gatsby-plugin-google-gtag"]
+  plugins: [
+    "gatsby-plugin-styled-components",
+    "gatsby-plugin-google-gtag",
+    "gatsby-plugin-netlify",
+  ],
 };
