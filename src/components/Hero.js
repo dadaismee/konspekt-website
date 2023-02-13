@@ -1,8 +1,10 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
-import { bodyIntro, heading1, heading4, BodyText } from "../styles/TextStyles";
+import styled from "styled-components";
+import { Link } from "gatsby";
+import { heading1, heading4 } from "../styles/TextStyles";
 import { colors } from "../styles/ColorStyles";
-import { mediaQueries } from "../styles/GlobalStyles";
+import { mainShadow, mediaQueries } from "../styles/GlobalStyles";
+import { opacityAnimation, RombAnimation } from "./Animations";
 
 const Hero = () => {
   return (
@@ -19,7 +21,9 @@ const Hero = () => {
             that does the job <br />
             for you
           </Subtext>
-          <Button>Enroll in a workshop</Button>
+          <Link to="/course">
+            <Button>Enroll in a workshop</Button>
+          </Link>
         </TextWrapper>
       </Wrapper>
       <PatternImage src="/images/graphics/pattern_bar.svg" />
@@ -29,26 +33,22 @@ const Hero = () => {
 
 export default Hero;
 
-const animation = keyframes`
-  0% {
-    transform: translateX(0px);
-  }
-  100% {
-    transform: translateX(10px) ;
-  }
-`;
-
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(2, auto);
-  padding: 15vh 0vw; // 167px 128px // 15vh 4vw
-  background-color: ${colors.green80};
-  align-items: center;
+  padding: 15vh 4vw; // 167px 128px // 15vh 4vw
+  background-color: ${colors.green60};
 
   @media (max-width: ${mediaQueries.tablet}) {
     grid-template-columns: 1fr;
+    padding: 10vh 4vw; // 167px 128px // 15vh 4vw
     gap: 4vh;
-    padding: 15vh 0vw;
+  }
+
+  @media (max-width: ${mediaQueries.phone}) {
+    /* grid-template-columns: 1fr; */
+    /* padding: 10vh 4vw; // 167px 128px // 15vh 4vw */
+    gap: 6vh;
   }
 `;
 
@@ -57,21 +57,46 @@ const TaglineWrapper = styled.div`
   justify-content: center;
   align-items: center;
   justify-self: center;
-  background-color: ${colors.yellow100};
-  height: 17vw;
+  background-image: linear-gradient(
+    to right,
+    ${colors.yellow100} 100%,
+    ${colors.yellow40} 100%
+  );
+  background-repeat: no-repeat;
+  /* background-color: ${colors.yellow100}; */
   width: 46vw;
-  /* animation: ${animation} 0.5s forwards; */
-  /* height: 229px; */
-  /* width: 671px; */
+  height: 18vw;
 
   transform: skewX(160deg);
-  box-shadow: 5px 20px 40px rgba(0, 0, 0, 0.25);
+  animation: ${RombAnimation};
+  opacity: 0;
+  animation-delay: 0.25s;
 
   @media (max-width: ${mediaQueries.tablet}) {
     width: 75vw;
     height: 30vw;
   }
 `;
+
+// const TaglineWrapper = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   justify-self: center;
+//   background-color: ${colors.yellow100};
+//   width: 46vw;
+//   height: 18vw;
+//   /* height: 229px; */
+//   /* width: 671px; */
+
+//   transform: skewX(160deg);
+//   box-shadow: 5px 20px 40px rgba(0, 0, 0, 0.25);
+
+//   @media (max-width: ${mediaQueries.tablet}) {
+//     width: 75vw;
+//     height: 30vw;
+//   }
+// `;
 
 const Tagline = styled(heading1)`
   transform: skewX(-160deg);
@@ -83,18 +108,32 @@ const Tagline = styled(heading1)`
 
 const TextWrapper = styled.div`
   display: grid;
-  grid-template-rows: repeat(auto, 2);
-  gap: 2vw; // 35px
+  grid-template-rows: repeat(2, auto);
+  align-items: center;
+  justify-content: center;
+  /* gap: 2vw; // 35px */
 
   @media (max-width: ${mediaQueries.tablet}) {
     display: grid;
     grid-template-columns: repeat(2, auto);
+    gap: 0;
     justify-content: space-evenly;
-    align-items: center;
+    align-items: stretch;
+  }
+
+  @media (max-width: ${mediaQueries.phone}) {
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+    gap: 20px;
   }
 `;
 
 const Subtext = styled(heading4)`
+  opacity: 0;
+  animation: ${opacityAnimation};
+  animation-delay: 1.5s;
+
   span {
     color: ${colors.pink100};
   }
@@ -104,6 +143,9 @@ const Subtext = styled(heading4)`
     span {
       color: ${colors.textWhite};
     }
+  }
+  @media (max-width: ${mediaQueries.phone}) {
+    font-size: 24px;
   }
 `;
 
@@ -116,10 +158,34 @@ const Button = styled.button`
   text-align: center;
   color: ${colors.textWhite};
   font-weight: 700;
-  font-size: 1.6vw; //24px
+  font-size: 1.6vw; //24px // 1.6vw
+  transition: all 0.25s;
+  opacity: 0;
+  animation: ${opacityAnimation};
+  animation-delay: 2s;
+
+  :hover {
+    background-color: ${colors.yellow100};
+    color: ${colors.textBlack};
+    transform: skewX(-15deg);
+    border-radius: 0px;
+    box-shadow: ${mainShadow};
+    cursor: pointer;
+  }
+
+  :active {
+    background-color: ${colors.yellow100};
+    color: ${colors.textBlack};
+  }
 
   @media (max-width: ${mediaQueries.tablet}) {
-    font-size: 2.4vw;
+    font-size: 2.8vw;
+    width: auto;
+    padding: 20px;
+  }
+
+  @media (max-width: ${mediaQueries.phone}) {
+    font-size: 4vw;
   }
 `;
 
