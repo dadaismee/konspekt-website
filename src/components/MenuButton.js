@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
 import { colors } from "../styles/ColorStyles";
-import { mainShadow, mediaQueries } from "../styles/GlobalStyles";
+import { mediaQueries } from "../styles/GlobalStyles";
 import { bodyText } from "../styles/TextStyles";
 import { RombHover } from "./Animations";
 
