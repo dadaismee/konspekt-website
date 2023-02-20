@@ -19,4 +19,12 @@ export const menuItems = [
     title: "About",
     link: "/about",
   },
+  // {
+  //   title: "Privacy Policy",
+  //   link: "/privacy",
+  // },
+  // {
+  //   title: "Terms of service",
+  //   link: "/legal",
+  // },
 ];

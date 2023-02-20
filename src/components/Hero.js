@@ -4,7 +4,7 @@ import { Link } from "gatsby";
 import { heading1, heading4 } from "../styles/TextStyles";
 import { colors } from "../styles/ColorStyles";
 import { mainShadow, mediaQueries } from "../styles/GlobalStyles";
-import { opacityAnimation, RombAnimation } from "./Animations";
+import { opacityAnimation, RombOpacityAnimation } from "./Animations";
 
 const Hero = () => {
   return (
@@ -63,12 +63,11 @@ const TaglineWrapper = styled.div`
     ${colors.yellow40} 100%
   );
   background-repeat: no-repeat;
-  /* background-color: ${colors.yellow100}; */
   width: 46vw;
   height: 18vw;
 
   transform: skewX(160deg);
-  animation: ${RombAnimation};
+  animation: ${RombOpacityAnimation};
   opacity: 0;
   animation-delay: 0.25s;
 
@@ -77,26 +76,6 @@ const TaglineWrapper = styled.div`
     height: 30vw;
   }
 `;
-
-// const TaglineWrapper = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   justify-self: center;
-//   background-color: ${colors.yellow100};
-//   width: 46vw;
-//   height: 18vw;
-//   /* height: 229px; */
-//   /* width: 671px; */
-
-//   transform: skewX(160deg);
-//   box-shadow: 5px 20px 40px rgba(0, 0, 0, 0.25);
-
-//   @media (max-width: ${mediaQueries.tablet}) {
-//     width: 75vw;
-//     height: 30vw;
-//   }
-// `;
 
 const Tagline = styled(heading1)`
   transform: skewX(-160deg);

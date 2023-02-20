@@ -3,7 +3,7 @@ import { colors } from "../styles/ColorStyles";
 
 export const RombHover = styled.div`
   padding: 0 0.25vw;
-  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
   background-size: 0 100%;
   background-repeat: no-repeat;
   transform: skewX(-20deg);
@@ -18,15 +18,15 @@ export const RombHover = styled.div`
   }
 `;
 
-const Romb = keyframes`
+const RombOpacity = keyframes`
   0% {
     background-size: 0 100%;
-    transform: translateY(10px) skewX(-20deg);
+    /* transform: skewX(-20deg); */
   }
   
   50% {
     background-size: 0 100%;
-    transform: translateY(0px) skewX(-20deg);
+    /* transform: skewX(-20deg); */
   }
   75% {
     box-shadow: 0 0 0 rgba(0,0,0,0);
@@ -46,10 +46,23 @@ const opacity = keyframes`
     opacity: 100%;
   }`;
 
-export const RombAnimation = (props) => css`
-  ${Romb} 1.5s forwards;
+const Romb = keyframes`
+  0% {
+    background-size: 0 100%;
+  }
+  100% {
+    background-size: 100% 100%;
+    /* animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1); */
+  }`;
+
+export const RombOpacityAnimation = (props) => css`
+  ${RombOpacity} 1.5s forwards;
 `;
 
 export const opacityAnimation = css`
-  ${opacity} 1s forwards
+  ${opacity} 1s forwards;
+`;
+
+export const RombAnimation = css`
+  ${Romb} 1s forwards;
 `;

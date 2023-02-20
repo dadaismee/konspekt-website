@@ -6,12 +6,24 @@ import { mediaQueries } from "../styles/GlobalStyles";
 import { bodyText } from "../styles/TextStyles";
 import { RombHover } from "./Animations";
 
-const MenuButton = ({ title, link }) => {
+const styles = {
+  normal: {
+    fontWeight: "700",
+    textAlign: "right",
+  },
+  footer: {
+    fontWeight: "500",
+    textAlign: "left",
+    fontSize: "16px",
+  },
+};
+
+const MenuButton = ({ title, link, buttonStyles }) => {
   return (
     <>
       <Link to={link}>
         <MenuItemWrapper>
-          <MenuItem>{title}</MenuItem>
+          <MenuItem buttonStyles={buttonStyles}>{title}</MenuItem>
         </MenuItemWrapper>
       </Link>
     </>
@@ -24,13 +36,12 @@ const MenuItemWrapper = styled(RombHover)`
   color: ${colors.textBlack};
 
   @media (max-width: ${mediaQueries.tablet}) {
-    text-align: right;
-    font-weight: 500;
+    ${(props) => (props.styles === "footer" ? styles.footer : styles.normal)}
   }
 `;
 
 const MenuItem = styled(bodyText)`
-  font-weight: 700;
-  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   transform: skewX(20deg);
+  ${(props) =>
+    props.buttonStyles === "footer" ? styles.footer : styles.normal}
 `;

@@ -6,9 +6,5 @@ module.exports = {
     title: `konspekt-web`,
     siteUrl: `https://www.yourdomain.tld`,
   },
-  plugins: [
-    "gatsby-plugin-styled-components",
-    "gatsby-plugin-google-gtag",
-    "gatsby-plugin-netlify",
-  ],
+  plugins: ["gatsby-plugin-styled-components", "gatsby-plugin-netlify"],
 };

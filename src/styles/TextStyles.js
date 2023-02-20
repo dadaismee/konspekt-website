@@ -17,8 +17,8 @@ export const heading1 = styled.h1`
 export const heading2 = styled.h2`
   font-style: normal;
   font-weight: 700;
-  font-size: 48.8782px;
-  line-height: 60px;
+  font-size: 48.87px;
+  /* line-height: 60px; */
   color: ${colors.textBlack};
 `;
 
@@ -54,7 +54,7 @@ export const bodyIntro = styled.p`
 export const bodyText = styled.p`
   font-style: normal;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 1.38vw; //20px;
   line-height: 145%;
   color: ${colors.textBlack};
 `;
@@ -70,7 +70,11 @@ export const cardHeading = styled.h5`
 export const smallText = styled.p`
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: 1.1vw; //16px;
+  /* line-height: 19px; */
   color: ${colors.textBlack};
+
+  @media (max-width: ${mediaQueries.tablet}) {
+    font-size: 13px;
+  }
 `;

@@ -3,6 +3,10 @@
    License: none (public domain)
 */
 
+:root {
+  --section-padding: 2.7vh 7vw;
+}
+
 html,
 body,
 div,
@@ -133,7 +137,5 @@ table {
   border-spacing: 0;
 }
 a {
-  color: #282828;
   text-decoration: none;
-  font-weight: bold;
 }
