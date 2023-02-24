@@ -29,7 +29,7 @@ export const heading3 = styled.h3`
   font-style: normal;
   font-weight: 700;
   font-size: 2.71vw; //39.1026px;
-  line-height: 48px;
+  line-height: 3.33vw; //48px
   color: ${colors.textBlack};
 
   @media (max-width: ${mediaQueries.tablet}) {

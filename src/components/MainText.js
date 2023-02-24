@@ -17,8 +17,8 @@ export default MainText;
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, auto);
-  gap: 1.73vw; //25px
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px; //25px
 
   @media (max-width: ${mediaQueries.tablet}) {
     grid-template-columns: repeat(2, 1fr);
@@ -35,13 +35,7 @@ const Image = styled.img`
   }
 `;
 
-const Tagline = styled(heading3)`
-  width: 0.2vw; // 288px
-
-  @media (max-width: ${mediaQueries.tablet}) {
-    width: auto;
-  }
-`;
+const Tagline = styled(heading3)``;
 
 const Text = styled(bodyIntro)`
   max-width: 578.72px;
