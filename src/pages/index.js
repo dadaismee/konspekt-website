@@ -1,9 +1,9 @@
 import React from "react";
-import { Hero, Layout } from "../components/components_index";
-import TextSection from "../components/TextSection";
 import "../index.css";
+import { Hero, Layout, TextSection } from "../components/components_index";
+import { colors } from "../styles/ColorStyles";
 
-const homePageHeading = {
+const heading = {
   first: {
     title: "Konspekt",
     isBold: true,
@@ -26,14 +26,34 @@ const homePageHeading = {
   },
 };
 
+const mainText = {
+  image: "/images/graphics/pattern_typography.svg",
+  tagline: "With courses, meetups and learning resources",
+  text: "Research writing is not straightforward in terms of procedure. It can be daunting and complex to grasp, especially when you need to start a new paper and face a blank screen.",
+};
+
 const index = () => {
   return (
     <Layout>
       <Hero />
-      <TextSection headingText={homePageHeading} />
+      <TextSection
+        headingText={heading}
+        mainText={mainText}
+        color={colors.yellow100}
+      />
     </Layout>
   );
 };
 
 export default index;
 export const Head = () => <title>Konspekt</title>;
+
+// export const query = graphql`
+//   query SiteTitleQuery {
+//     site {
+//       siteMetadata {
+//         title
+//       }
+//     }
+//   }
+// `;

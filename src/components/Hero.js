@@ -144,10 +144,8 @@ const Button = styled.button`
   animation-delay: 2s;
 
   :hover {
-    background-color: ${colors.yellow100};
-    color: ${colors.textBlack};
-    transform: skewX(-15deg);
-    border-radius: 0px;
+    /* color: ${colors.textBlack}; */
+    transform: translateY(-5px);
     box-shadow: ${mainShadow};
     cursor: pointer;
   }

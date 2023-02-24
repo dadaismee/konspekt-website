@@ -17,7 +17,9 @@ const Footer = () => {
         <Copywrite>Konspekt © 2023</Copywrite>
         <CreatedBy>
           👨🏼‍🎨/👨🏼‍💻 —
-          <Link to="https://vshevchenko.netlify.app/">Valerii Shevchenko</Link>
+          <Link to="https://vshevchenko.netlify.app/" target="_blank">
+            Valerii Shevchenko
+          </Link>
         </CreatedBy>
       </BottomGrid>
     </Wrapper>

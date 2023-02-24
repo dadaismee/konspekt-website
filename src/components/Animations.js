@@ -55,7 +55,7 @@ const Romb = keyframes`
     /* animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1); */
   }`;
 
-export const RombOpacityAnimation = (props) => css`
+export const RombOpacityAnimation = css`
   ${RombOpacity} 1.5s forwards;
 `;
 
@@ -63,6 +63,6 @@ export const opacityAnimation = css`
   ${opacity} 1s forwards;
 `;
 
-export const RombAnimation = css`
+export const RombCSS = css`
   ${Romb} 1s forwards;
 `;

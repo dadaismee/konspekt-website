@@ -14,7 +14,7 @@ export const colors = {
   pink60: "rgba(249, 122, 162, 0.6)",
   pink40: "rgba(249, 122, 162, 0.4)",
 
-  yellow100: "rgba(241, 227, 99, 1)",
+  yellow100: "rgba(241, 227, 99, 1)", //#f1e363
   yellow80: "rgba(241, 227, 99, 0.8)",
   yellow60: "rgba(241, 227, 99, 0.6)",
   yellow40: "rgba(241, 227, 99, 0.4)",

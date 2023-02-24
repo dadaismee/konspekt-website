@@ -17,17 +17,25 @@ export const heading1 = styled.h1`
 export const heading2 = styled.h2`
   font-style: normal;
   font-weight: 700;
-  font-size: 48.87px;
-  /* line-height: 60px; */
+  font-size: 3.39vw; //48.87px;
   color: ${colors.textBlack};
+
+  @media (max-width: ${mediaQueries.phone}) {
+    font-size: 40px;
+  }
 `;
 
 export const heading3 = styled.h3`
   font-style: normal;
   font-weight: 700;
-  font-size: 39.1026px;
+  font-size: 2.71vw; //39.1026px;
   line-height: 48px;
   color: ${colors.textBlack};
+
+  @media (max-width: ${mediaQueries.tablet}) {
+    font-size: 5.42vw;
+    line-height: 120%;
+  }
 `;
 
 export const heading4 = styled.h4`
@@ -46,9 +54,17 @@ export const heading4 = styled.h4`
 export const bodyIntro = styled.p`
   font-style: normal;
   font-weight: 500;
-  font-size: 23.4615px;
+  font-size: 1.6vw; //23.4615px;
   line-height: 130%;
   color: ${colors.textBlack};
+
+  @media (max-width: ${mediaQueries.tablet}) {
+    font-size: 20px;
+  }
+
+  @media (max-width: ${mediaQueries.phone}) {
+    font-size: 16px;
+  }
 `;
 
 export const bodyText = styled.p`

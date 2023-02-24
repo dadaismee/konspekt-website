@@ -1,12 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import CenterHeading from "./CenterHeading";
+import { CenterHeading, MainText } from "./components_index";
 
-const TextSection = ({ headingText }) => {
+const TextSection = ({ headingText, mainText, color }) => {
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 200;
+      if (isScrolled !== hasScrolled) setHasScrolled(true);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [hasScrolled]);
+
   return (
     <Wrapper>
-      <CenterHeading headingText={headingText} />
-      <MainText />
+      <CenterHeading
+        headingText={headingText}
+        color={color}
+        hasScrolled={hasScrolled}
+      />
+      <MainText
+        image={mainText.image}
+        tagline={mainText.tagline}
+        text={mainText.text}
+      />
       <ActionList />
     </Wrapper>
   );
@@ -15,13 +38,9 @@ const TextSection = ({ headingText }) => {
 export default TextSection;
 
 const Wrapper = styled.div`
-  position: relative;
-  padding: var(--section-padding);
-`;
-
-const MainText = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, auto);
+  gap: 4vh;
+  padding: 4.1vw 7.7vw; //var(--section-padding);
 `;
 
 const ActionList = styled.ol``;
