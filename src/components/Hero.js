@@ -46,7 +46,8 @@ const Wrapper = styled.div`
   }
 
   @media (max-width: ${mediaQueries.phone}) {
-    padding: 5vh 4vw; // 167px 128px // 15vh 4vw
+    padding: 16vw 4vw 8vw; // 167px 128px // 15vh 4vw
+    place-content: center;
   }
 `;
 
