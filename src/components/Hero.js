@@ -5,14 +5,16 @@ import { heading1, heading4 } from "../styles/TextStyles";
 import { colors } from "../styles/ColorStyles";
 import { mainShadow, mediaQueries } from "../styles/GlobalStyles";
 import { opacityAnimation, RombOpacityAnimation } from "./Animations";
+import { PatternImage } from "./components_index";
 
-const Hero = () => {
+const Hero = ({ taglineText }) => {
   return (
     <>
       <Wrapper>
         <TaglineWrapper>
           <Tagline>
-            Streamline your <br /> <span>research writing</span>
+            {taglineText.firstLine}
+            <br /> <span>{taglineText.secondLine}</span>
           </Tagline>
         </TaglineWrapper>
         <TextWrapper>
@@ -26,7 +28,7 @@ const Hero = () => {
           </Link>
         </TextWrapper>
       </Wrapper>
-      <PatternImage src="/images/graphics/pattern_bar.svg" />
+      <PatternImage />
     </>
   );
 };
@@ -163,9 +165,4 @@ const Button = styled.button`
   @media (max-width: ${mediaQueries.phone}) {
     font-size: 5vw;
   }
-`;
-
-const PatternImage = styled.img`
-  width: 100%;
-  height: 100%;
 `;

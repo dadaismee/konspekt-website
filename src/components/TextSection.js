@@ -7,7 +7,7 @@ const TextSection = ({ headingText, mainText, color }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 200;
+      const isScrolled = window.scrollY > window.innerHeight / 2;
       if (isScrolled !== hasScrolled) setHasScrolled(true);
     };
 

@@ -6,7 +6,7 @@ import { Logo, Menu } from "./components_index";
 const Header = () => {
   return (
     <Wrapper>
-      <Link to="/ " alt="logo">
+      <Link to="/" alt="logo">
         <Logo />
       </Link>
       <Menu menuStyles="normal" buttonStyles="normal" />

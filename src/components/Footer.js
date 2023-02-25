@@ -44,7 +44,7 @@ const Grid = styled.div`
 const BottomGrid = styled.div`
   display: grid;
   grid-template-rows: repeat(2, auto);
-  gap: 0.7vw; //10px;
+  gap: 0.35vw; //10px;
   text-align: right;
 
   @media (max-width: ${mediaQueries.tablet}) {
