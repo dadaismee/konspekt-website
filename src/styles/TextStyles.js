@@ -62,8 +62,8 @@ export const bodyIntro = styled.p`
     font-size: 20px;
   }
 
-  @media (max-width: ${mediaQueries.phone}) {
-    font-size: 16px;
+  @media (max-width: ${mediaQueries.tablet}) {
+    font-size: 18px;
   }
 `;
 
@@ -73,6 +73,10 @@ export const bodyText = styled.p`
   font-size: 1.38vw; //20px;
   line-height: 145%;
   color: ${colors.textBlack};
+
+  @media (max-width: ${mediaQueries.phone}) {
+    font-size: 16px;
+  }
 `;
 
 export const cardHeading = styled.h5`

@@ -1,27 +1,40 @@
 import React from "react";
 import styled from "styled-components";
+import { mediaQueries } from "../styles/GlobalStyles";
 import { bodyIntro, bodyText } from "../styles/TextStyles";
 
 const cardType = {
-  long: {
-    display: "grid",
-    gridTemplateColumns: "repeat(2, 1fr)",
-    gridColumnStart: "1",
-    gridColumnEnd: "3",
-    width: "100%",
-    height: "auto",
+  product: {
+    long: {
+      display: "grid",
+      gridTemplateColumns: "repeat(2, 1fr)",
+      gridColumnStart: "1",
+      gridColumnEnd: "3",
+      width: "100%",
+      height: "auto",
+    },
+    normal: {
+      display: "flex",
+      flexDirection: "column",
+      width: "39.7vw", //573px
+      height: "64vh", //696px
+    },
   },
-  normal: {
+  whatChoose: {
     display: "flex",
     flexDirection: "column",
-    width: "573px",
-    height: "696px",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "0px 40px",
+    gap: "40px",
+    maxWidth: "382px",
+    height: "602px",
   },
 };
 
 const ContentCard = ({ color, cardData }) => {
   return (
-    <Wrapper type={cardData.type} color={color}>
+    <Wrapper type={cardData.type} subtype={cardData.subtype} color={color}>
       <Image src={cardData.image} />
       <TextWrapper>
         <Title>{cardData.title}</Title>
@@ -35,13 +48,23 @@ const ContentCard = ({ color, cardData }) => {
 export default ContentCard;
 
 const Wrapper = styled.div`
-  gap: 40px;
-  padding: 40px;
-  ${(props) => (props.type === "long" ? cardType.long : cardType.normal)};
+  ${({ type, subtype }) =>
+    type === "whatChoose"
+      ? cardType.whatChoose
+      : subtype === "long"
+      ? cardType.product.long
+      : cardType.product.normal};
+  gap: 3.77vh; //40px;
+  padding: 2.77vw; //40px
 
   box-shadow: 5px 20px 40px rgba(0, 0, 0, 0.25);
   background-color: ${({ color }) => color};
   border-radius: 25px;
+
+  @media (max-width: ${mediaQueries.tablet}) {
+    width: 100%;
+    padding: 5.54vw;
+  }
 `;
 
 const Image = styled.img`

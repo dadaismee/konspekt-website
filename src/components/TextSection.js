@@ -3,28 +3,9 @@ import styled from "styled-components";
 import { CenterHeading, MainText } from "./components_index";
 
 const TextSection = ({ headingText, mainText, color }) => {
-  const [hasScrolled, setHasScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > window.innerHeight / 2;
-      if (isScrolled !== hasScrolled) setHasScrolled(true);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [hasScrolled]);
-
   return (
     <Wrapper>
-      <CenterHeading
-        headingText={headingText}
-        color={color}
-        hasScrolled={hasScrolled}
-      />
+      <CenterHeading headingText={headingText} color={color} />
       <MainText
         image={mainText.image}
         tagline={mainText.tagline}

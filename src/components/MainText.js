@@ -43,5 +43,7 @@ const Text = styled(bodyIntro)`
 
   @media (max-width: ${mediaQueries.tablet}) {
     width: auto;
+    grid-column-start: 1;
+    grid-column-end: 3;
   }
 `;

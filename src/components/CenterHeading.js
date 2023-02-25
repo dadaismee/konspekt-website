@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { heading2 } from "../styles/TextStyles";
 import { cssForRombAnimation, mediaQueries } from "../styles/GlobalStyles";
 import { RombCSS } from "./Animations";
 
-const CenterHeading = ({ headingText, hasScrolled, color }) => {
+const CenterHeading = ({ headingText, color }) => {
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 100;
+      if (isScrolled !== hasScrolled) setHasScrolled(true);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [hasScrolled]);
+
   return (
     <Wrapper>
       <FirstLine
@@ -69,6 +84,7 @@ const Wrapper = styled.div`
   @media (max-width: ${mediaQueries.phone}) {
     display: flex;
     flex-direction: column;
+    /* align-items: center; */
     gap: 2vw;
   }
 `;
