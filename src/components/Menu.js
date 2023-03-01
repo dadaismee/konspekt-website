@@ -2,14 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { menuItems } from "../data/menuItems";
 import { mediaQueries } from "../styles/GlobalStyles";
-import { MenuButton } from "./components_index";
+import { MenuButton, MenuTooltip } from "./components_index";
 
 const MenuWrapStyle = {
   normal: {
     display: "grid",
-    gridTemplateColumns: `repeat(5, auto)`,
+    gridTemplateColumns: `repeat(${menuItems.length}, auto)`,
     placeItems: "end",
-    gap: "3vw",
+    // gap: "3vw",
   },
   footer: {
     display: "grid",
@@ -20,15 +20,18 @@ const MenuWrapStyle = {
 
 const Menu = ({ menuStyles, buttonStyles }) => {
   return (
-    <MenuWrapper menuStyles={menuStyles} count={menuItems.length}>
+    <MenuWrapper menuStyles={menuStyles}>
       {menuItems.map((item, index) => (
         <MenuButton
-          buttonStyles={buttonStyles}
           title={item.title}
-          key={index}
           link={item.link}
+          buttonStyles={buttonStyles}
+          key={index}
         />
       ))}
+      <HamburgerWrapper menuStyles={menuStyles}>
+        <MenuTooltip />
+      </HamburgerWrapper>
     </MenuWrapper>
   );
 };
@@ -36,10 +39,20 @@ const Menu = ({ menuStyles, buttonStyles }) => {
 export default Menu;
 
 const MenuWrapper = styled.div`
-  ${(props) =>
-    props.menuStyles === "footer" ? MenuWrapStyle.footer : MenuWrapStyle.normal}
+  ${({ menuStyles }) =>
+    menuStyles === "footer" ? MenuWrapStyle.footer : MenuWrapStyle.normal}
 
   @media (max-width: ${mediaQueries.tablet}) {
-    display: ${(props) => (props.menuStyles === "footer" ? "block" : "none")};
+    > a {
+      display: ${(props) => (props.menuStyles === "footer" ? "block" : "none")};
+    }
+  }
+`;
+
+const HamburgerWrapper = styled.div`
+  display: none;
+
+  @media (max-width: ${mediaQueries.tablet}) {
+    display: ${(props) => (props.menuStyles === "footer" ? "none" : "block")};
   }
 `;

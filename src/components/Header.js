@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
 import { Logo, Menu } from "./components_index";
+import { mediaQueries } from "../styles/GlobalStyles";
 
 const Header = () => {
   return (
@@ -21,5 +22,9 @@ const Wrapper = styled.div`
   grid-template-columns: auto auto;
   gap: 36vw; // 530px
   padding: var(--section-padding);
-  padding-bottom: 1.3vh;
+  /* padding-bottom: 1.3vh; */
+
+  @media (max-width: ${mediaQueries.tablet}) {
+    padding: var(--section-padding);
+  }
 `;

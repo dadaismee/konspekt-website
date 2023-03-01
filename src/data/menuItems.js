@@ -7,10 +7,10 @@ export const menuItems = [
     title: "Obsidian Pack",
     link: "/pack",
   },
-  {
-    title: "Meetup",
-    link: "/meetup",
-  },
+  // {
+  //   title: "Meetup",
+  //   link: "/meetup",
+  // },
   {
     title: "Blog",
     link: "/blog",

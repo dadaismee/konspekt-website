@@ -11,3 +11,4 @@ export { default as TextSection } from "./TextSection";
 export { default as PatternImage } from "./PatternImage";
 export { default as CirriculumCard } from "./CirriculumCard";
 export { default as ContentCard } from "./ContentCard";
+export { default as MenuTooltip } from "./MenuTooltip";

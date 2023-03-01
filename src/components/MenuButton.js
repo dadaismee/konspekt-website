@@ -18,7 +18,7 @@ const styles = {
   },
 };
 
-const MenuButton = ({ title, link, buttonStyles }) => {
+const MenuButton = ({ link, title, buttonStyles }) => {
   return (
     <>
       <Link to={link}>

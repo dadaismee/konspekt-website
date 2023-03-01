@@ -1,7 +1,6 @@
 import React from "react";
 import "../index.css";
-import { Hero, Layout, TextSection } from "../components/components_index";
-import { colors } from "../styles/ColorStyles";
+import { Hero, Layout } from "../components/components_index";
 
 const taglineText = {
   firstLine: "Not found",
