@@ -25,11 +25,15 @@ const MenuTooltip = ({ buttonStyles }) => {
 export default MenuTooltip;
 
 const Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: 120px;
+
   background-color: ${({ isOpen }) =>
     isOpen ? colors.green100 : colors.green40};
   border-radius: 25px;
-  padding: 20px;
+  padding: 15px;
   cursor: pointer;
   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   box-shadow: ${mainShadow};
+  z-index: 1;
 `;

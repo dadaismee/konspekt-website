@@ -9,7 +9,7 @@ const CenterHeading = ({ headingText, color }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 100;
+      const isScrolled = window.scrollY > 500;
       if (isScrolled !== hasScrolled) setHasScrolled(true);
     };
 
@@ -80,6 +80,7 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(4, min-content);
   place-content: center;
+  padding: auto;
 
   @media (max-width: ${mediaQueries.phone}) {
     display: flex;

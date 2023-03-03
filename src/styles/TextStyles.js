@@ -21,7 +21,7 @@ export const heading2 = styled.h2`
   color: ${colors.textBlack};
 
   @media (max-width: ${mediaQueries.phone}) {
-    font-size: 40px;
+    font-size: 10vw;
   }
 `;
 

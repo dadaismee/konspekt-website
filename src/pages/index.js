@@ -7,6 +7,7 @@ import {
   TextSection,
   ContentCard,
   CenterHeading,
+  CirriculumCard,
 } from "../components/components_index";
 import { colors } from "../styles/ColorStyles";
 import { mediaQueries } from "../styles/GlobalStyles";
@@ -96,6 +97,29 @@ const chooseCardData = [
   },
 ];
 
+const paperAsSource = {
+  first: {
+    title: "Your papers",
+    isBold: true,
+    isAnimated: false,
+  },
+  second: {
+    title: "are",
+    isBold: false,
+    isAnimated: false,
+  },
+  third: {
+    title: "source code",
+    isBold: true,
+    isAnimated: true,
+  },
+  fourth: {
+    title: "too",
+    isBold: false,
+    isAnimated: false,
+  },
+};
+
 const chooseHeading = {
   first: {
     title: "What",
@@ -128,6 +152,8 @@ const index = () => {
         mainText={mainText}
         color={colors.yellow100}
       />
+      <CenterHeading headingText={paperAsSource} color={colors.pink80} />
+      <CirriculumCard />
       <CardGrid type="product">
         {cardData.map((card, index) => (
           <ContentCard

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { mediaQueries } from "../styles/GlobalStyles";
 
 const PatternImage = () => {
   const imageHeight = 101;
@@ -10,7 +9,7 @@ const PatternImage = () => {
     const handleScroll = () => {
       if (
         window.scrollY > imageHeight &&
-        window.scrollY < window.innerHeight / 2.5
+        window.scrollY < window.innerHeight / 3
       )
         setScrolled(window.scrollY);
     };
@@ -23,12 +22,11 @@ const PatternImage = () => {
   }, [scrolled]);
 
   return (
-    // <Wrapper scrolled={scrolled} src="/images/graphics/pattern_bar.svg" />;
     <Wrapper>
       <svg
         width="1440"
         height={scrolled}
-        viewBox={`0 0 1440 101`}
+        viewBox={`${window.innerWidth <= 820 ? scrolled / 0.5 : 0} 0 1440 101`}
         preserveAspectRatio="none"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
