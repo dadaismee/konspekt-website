@@ -16,7 +16,7 @@ const styles = {
   },
   menu: {
     gridTemplateColumns: "80px",
-    height: `${window.innerWidth >= mediaQueries.phone ? "140px" : "120px"}`,
+    height: "120px",
     borderRadius: "25px",
   },
 };

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
 import { Logo, Menu } from "./components_index";
@@ -14,14 +14,14 @@ const Header = () => {
 
   function handleClickOutside(e) {
     e.preventDefault();
-    setIsOpen(false);
+    if (window.scrollY > 20) setIsOpen(false);
   }
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("scroll", handleClickOutside);
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("scroll", handleClickOutside);
     };
   }, []);
 
