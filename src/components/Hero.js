@@ -19,9 +19,9 @@ const Hero = ({ taglineText }) => {
         </TaglineWrapper>
         <TextWrapper>
           <Subtext>
-            with a <span>workflow</span> <br />
-            that does the job <br />
-            for you
+            Streamline your work <br />
+            with <span>toolchains</span> <br />
+            that do the job <br />
           </Subtext>
           <Link to="/course">
             <Button>Enroll in a workshop</Button>
@@ -80,6 +80,7 @@ const TaglineWrapper = styled.div`
 
 const Tagline = styled(heading1)`
   transform: skewX(-160deg);
+  text-align: center;
 
   span {
     color: ${colors.pink100};

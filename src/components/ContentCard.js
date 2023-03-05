@@ -35,7 +35,7 @@ const cardType = {
 const ContentCard = ({ color, cardData }) => {
   return (
     <Wrapper type={cardData.type} subtype={cardData.subtype} color={color}>
-      <Image src={cardData.image} />
+      <Image type={cardData.type} src={cardData.image} />
       <TextWrapper>
         <Title>{cardData.title}</Title>
         <Text>{cardData.text}</Text>
@@ -72,7 +72,7 @@ const Image = styled.img`
   width: 100%;
   /* height: 24vh; */
   object-fit: cover;
-  border-radius: 25px;
+  border-radius: ${(props) => (props.type === "whatChoose" ? "0px" : "25px")};
 
   /* ${Wrapper} {
     border-radius: ${(props) => (props.type === "long" ? "none" : "25px")};

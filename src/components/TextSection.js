@@ -5,7 +5,6 @@ import { CenterHeading, MainText } from "./components_index";
 const TextSection = ({ headingText, mainText, color }) => {
   return (
     <Wrapper>
-      <CenterHeading headingText={headingText} color={color} />
       <MainText
         image={mainText.image}
         tagline={mainText.tagline}

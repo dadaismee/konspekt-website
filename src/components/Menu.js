@@ -18,9 +18,9 @@ const MenuWrapStyle = {
   },
 };
 
-const Menu = ({ menuStyles, buttonStyles }) => {
+const Menu = ({ menuStyles, buttonStyles, isOpen, handleClick, ref }) => {
   return (
-    <MenuWrapper menuStyles={menuStyles}>
+    <MenuWrapper isOpen={isOpen} menuStyles={menuStyles}>
       {menuItems.map((item, index) => (
         <MenuButton
           title={item.title}
@@ -29,9 +29,9 @@ const Menu = ({ menuStyles, buttonStyles }) => {
           key={index}
         />
       ))}
-      <HamburgerWrapper menuStyles={menuStyles}>
-        <MenuTooltip />
-      </HamburgerWrapper>
+      <TooltipWrapper ref={ref}>
+        <MenuTooltip isOpen={isOpen} handleClick={handleClick} />
+      </TooltipWrapper>
     </MenuWrapper>
   );
 };
@@ -39,6 +39,8 @@ const Menu = ({ menuStyles, buttonStyles }) => {
 export default Menu;
 
 const MenuWrapper = styled.div`
+  display: ${({ isOpen }) => (isOpen ? "none" : "grid")};
+
   ${({ menuStyles }) =>
     menuStyles === "footer" ? MenuWrapStyle.footer : MenuWrapStyle.normal}
 
@@ -49,10 +51,10 @@ const MenuWrapper = styled.div`
   }
 `;
 
-const HamburgerWrapper = styled.div`
+const TooltipWrapper = styled.div`
   display: none;
 
   @media (max-width: ${mediaQueries.tablet}) {
-    display: ${(props) => (props.menuStyles === "footer" ? "none" : "block")};
+    display: block;
   }
 `;

@@ -4,7 +4,7 @@ import { heading2 } from "../styles/TextStyles";
 import { cssForRombAnimation, mediaQueries } from "../styles/GlobalStyles";
 import { RombCSS } from "./Animations";
 
-const CenterHeading = ({ headingText, color }) => {
+const CenterHeading = ({ headingText, color, align }) => {
   const [hasScrolled, setHasScrolled] = useState(false);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const CenterHeading = ({ headingText, color }) => {
   }, [hasScrolled]);
 
   return (
-    <Wrapper>
+    <Wrapper align={align}>
       <FirstLine
         isAnimated={headingText.first.isAnimated}
         color={color}
@@ -79,20 +79,20 @@ export default CenterHeading;
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(4, min-content);
+  padding: var(--section-padding);
   place-content: center;
-  padding: auto;
 
   @media (max-width: ${mediaQueries.phone}) {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
-    gap: 2vw;
+    align-items: ${({ align }) => (align === "center" ? "center" : "start")};
   }
 `;
 
 const Heading = styled(heading2)`
   font-weight: ${(props) => (props.isBold === true ? 700 : 500)};
   transform: ${(props) => (props.isAnimated === true ? "skew(20deg)" : "none")};
+  /* background-color: red; */
 `;
 
 const FirstLine = styled.div`
@@ -106,6 +106,7 @@ const FirstLine = styled.div`
   ${({ isAnimated, color }) =>
     isAnimated === true ? cssForRombAnimation(color) : false};
   animation: ${({ hasScrolled }) => (hasScrolled === true ? RombCSS : false)};
+  margin-bottom: -10px;
 `;
 
 const SecondLine = styled.div`
@@ -119,6 +120,7 @@ const SecondLine = styled.div`
   ${({ isAnimated, color }) =>
     isAnimated === true ? cssForRombAnimation(color) : false};
   animation: ${({ hasScrolled }) => (hasScrolled === true ? RombCSS : false)};
+  margin-bottom: -10px;
 `;
 
 const ThirdLine = styled.div`
@@ -132,6 +134,7 @@ const ThirdLine = styled.div`
   ${({ isAnimated, color }) =>
     isAnimated === true ? cssForRombAnimation(color) : false};
   animation: ${({ hasScrolled }) => (hasScrolled === true ? RombCSS : false)};
+  margin-bottom: -10px;
 `;
 
 const FourthLine = styled.div`
@@ -145,4 +148,5 @@ const FourthLine = styled.div`
   ${({ isAnimated, color }) =>
     isAnimated === true ? cssForRombAnimation(color) : false};
   animation: ${({ hasScrolled }) => (hasScrolled === true ? RombCSS : false)};
+  margin-bottom: -10px;
 `;

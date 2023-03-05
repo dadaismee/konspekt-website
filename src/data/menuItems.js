@@ -4,8 +4,8 @@ export const menuItems = [
     link: "/course",
   },
   {
-    title: "Obsidian Pack",
-    link: "/pack",
+    title: "Toolchain",
+    link: "/toolchain",
   },
   // {
   //   title: "Meetup",

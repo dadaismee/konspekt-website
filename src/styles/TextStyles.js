@@ -6,7 +6,7 @@ export const heading1 = styled.h1`
   font-style: normal;
   font-weight: 700;
   font-size: 5vw; //4vw
-  line-height: 120%;
+  /* line-height: 120%; */
   color: ${colors.textBlack};
 
   @media (max-width: ${mediaQueries.tablet}) {
@@ -73,6 +73,10 @@ export const bodyText = styled.p`
   font-size: 1.38vw; //20px;
   line-height: 145%;
   color: ${colors.textBlack};
+
+  @media (max-width: ${mediaQueries.tablet}) {
+    font-size: 20px;
+  }
 
   @media (max-width: ${mediaQueries.phone}) {
     font-size: 16px;
