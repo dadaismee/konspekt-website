@@ -107,6 +107,10 @@ const FirstLine = styled.div`
     isAnimated === true ? cssForRombAnimation(color) : false};
   animation: ${({ hasScrolled }) => (hasScrolled === true ? RombCSS : false)};
   margin-bottom: -10px;
+
+  @media (max-width: ${mediaQueries.phone}) {
+    margin-bottom: 0;
+  }
 `;
 
 const SecondLine = styled.div`
@@ -121,6 +125,10 @@ const SecondLine = styled.div`
     isAnimated === true ? cssForRombAnimation(color) : false};
   animation: ${({ hasScrolled }) => (hasScrolled === true ? RombCSS : false)};
   margin-bottom: -10px;
+
+  @media (max-width: ${mediaQueries.phone}) {
+    margin-bottom: 0;
+  }
 `;
 
 const ThirdLine = styled.div`
@@ -135,6 +143,10 @@ const ThirdLine = styled.div`
     isAnimated === true ? cssForRombAnimation(color) : false};
   animation: ${({ hasScrolled }) => (hasScrolled === true ? RombCSS : false)};
   margin-bottom: -10px;
+
+  @media (max-width: ${mediaQueries.phone}) {
+    margin-bottom: 0;
+  }
 `;
 
 const FourthLine = styled.div`
@@ -149,4 +161,8 @@ const FourthLine = styled.div`
     isAnimated === true ? cssForRombAnimation(color) : false};
   animation: ${({ hasScrolled }) => (hasScrolled === true ? RombCSS : false)};
   margin-bottom: -10px;
+
+  @media (max-width: ${mediaQueries.phone}) {
+    margin-bottom: 0;
+  }
 `;

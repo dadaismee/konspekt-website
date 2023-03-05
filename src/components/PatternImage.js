@@ -9,7 +9,7 @@ const PatternImage = () => {
     const handleScroll = () => {
       if (
         window.scrollY > imageHeight &&
-        window.scrollY < window.innerHeight / 3
+        window.scrollY < window.innerHeight / 4
       )
         setScrolled(window.scrollY);
     };
@@ -26,7 +26,8 @@ const PatternImage = () => {
       <svg
         width="1440"
         height={scrolled}
-        viewBox={`${window.innerWidth <= 820 ? scrolled / 0.5 : 0} 0 1440 101`}
+        viewBox="0 0 1440 101"
+        // viewBox={`${window.innerWidth <= 820 ? scrolled / 0.5 : 0} 0 1440 101`} // на мобиле вниз и вбок
         preserveAspectRatio="none"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
