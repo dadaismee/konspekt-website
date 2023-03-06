@@ -26,7 +26,7 @@ const PatternImage = () => {
       <svg
         width="1440"
         height={scrolled}
-        viewBox="0 0 1440 101"
+        viewBox={`0 0 1440 101`}
         // viewBox={`${window.innerWidth <= 820 ? scrolled / 0.5 : 0} 0 1440 101`} // на мобиле вниз и вбок
         preserveAspectRatio="none"
         fill="none"

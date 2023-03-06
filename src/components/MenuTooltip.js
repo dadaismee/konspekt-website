@@ -4,26 +4,28 @@ import { menuItems } from "../data/menuItems";
 import { colors } from "../styles/ColorStyles";
 import { mainShadow } from "../styles/GlobalStyles";
 import { MenuButton } from "./components_index";
-import { mediaQueries } from "../styles/GlobalStyles";
 
 const styles = {
   button: {
-    gridTemplateColumns: "10px",
+    gridTemplateColumns: "20px",
     height: "40px",
     borderRadius: "10px",
     color: `${colors.pink80}`,
     placeContent: "center",
+    padding: "10px",
   },
   menu: {
     gridTemplateColumns: "80px",
     height: "120px",
     borderRadius: "25px",
+    padding: "15px",
   },
 };
 
 const MenuTooltip = ({ isOpen, handleClick }) => {
   return (
     <Wrapper isOpen={isOpen} onClick={handleClick}>
+      <img src="/images/graphics/menu.svg" />
       {menuItems.map((item, index) => (
         <MenuButton title={item.title} link={item.link} key={index} />
       ))}
@@ -39,7 +41,6 @@ const Wrapper = styled.div`
   display: grid;
   background-color: ${({ isOpen }) =>
     isOpen ? colors.green100 : colors.green80};
-  padding: 15px;
   cursor: pointer;
   transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
   box-shadow: ${mainShadow};
@@ -47,5 +48,10 @@ const Wrapper = styled.div`
 
   > a {
     display: ${(props) => (props.isOpen ? "block" : "none")};
+  }
+
+  > img {
+    width: 100%;
+    display: ${(props) => (props.isOpen ? "none" : "block")};
   }
 `;
