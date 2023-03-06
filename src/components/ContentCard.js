@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import { colors } from "../styles/ColorStyles";
 import { mediaQueries } from "../styles/GlobalStyles";
 import { bodyIntro, bodyText } from "../styles/TextStyles";
+import Button from "./Button";
 
 const cardType = {
   product: {
@@ -40,7 +42,14 @@ const ContentCard = ({ color, cardData }) => {
         <Title>{cardData.title}</Title>
         <Text>{cardData.text}</Text>
       </TextWrapper>
-      {/* <Button /> */}
+      <ButtonWrapper>
+        {cardData.price && <Price>{cardData.price}</Price>}
+        <Button
+          bgColor={colors.pink100}
+          txtColor={colors.textWhite}
+          text="Buy"
+        />
+      </ButtonWrapper>
     </Wrapper>
   );
 };
@@ -90,3 +99,13 @@ const Title = styled(bodyIntro)`
 `;
 
 const Text = styled(bodyText)``;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const Price = styled(bodyText)`
+  font-weight: 700;
+`;

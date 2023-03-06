@@ -54,6 +54,7 @@ const cardData = [
     image: "/images/pictures/zoom pic.jpeg",
     title: "Konspekt video course",
     text: "The workshop is a 2-day Zoom study session with a teacher, where you will learn and practice:",
+    price: "$25",
   },
   {
     type: "product",
@@ -62,6 +63,7 @@ const cardData = [
     image: "/images/pictures/obsidian.png",
     title: "Obsidian Pack",
     text: "Obsidian Pack is a prepared and fully set up vault with bare essentials for a Konspekt method:",
+    price: "$25",
   },
   {
     type: "product",
