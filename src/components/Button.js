@@ -15,19 +15,28 @@ import { mediaQueries, mainShadow } from "../styles/GlobalStyles";
 //   },
 // };
 
-const Button = ({ width, bgColor, txtColor, text, type }) => {
-  return <Wrapper type={type}>{text}</Wrapper>;
+const Button = ({ bgColor, txtColor, text, type, handleClick }) => {
+  return (
+    <Wrapper
+      bgColor={bgColor}
+      txtColor={txtColor}
+      type={type}
+      onClick={handleClick}
+    >
+      {text}
+    </Wrapper>
+  );
 };
 
 export default Button;
 
 const Wrapper = styled.button`
-  background-color: ${colors.pink100};
+  background-color: ${({ bgColor }) => colors[`${bgColor}`]};
   border: none;
   padding: 10px 20px;
   border-radius: 15px;
   text-align: center;
-  color: ${colors.textWhite};
+  color: ${({ txtColor }) => colors[`${txtColor}`]};
   font-weight: 700;
   font-size: 1.6vw; //24px // 1.6vw
   transition: all 0.25s;

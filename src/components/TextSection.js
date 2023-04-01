@@ -1,16 +1,15 @@
 import React from "react";
 import styled from "styled-components";
-import { CenterHeading, MainText } from "./components_index";
+import { MainText } from "./components_index";
 
-const TextSection = ({ headingText, mainText, color }) => {
+const TextSection = ({ mainText, image }) => {
   return (
     <Wrapper>
       <MainText
-        image={mainText.image}
-        tagline={mainText.tagline}
-        text={mainText.text}
+        image={image}
+        tagline={mainText.title}
+        text={mainText.text.childMarkdownRemark.html}
       />
-      <ActionList />
     </Wrapper>
   );
 };
@@ -20,7 +19,5 @@ export default TextSection;
 const Wrapper = styled.div`
   display: grid;
   gap: 4vh;
-  padding: 4.1vw 7.7vw; //var(--section-padding);
+  padding: var(--section-padding); //4.1vw 7.7vw; //
 `;
-
-const ActionList = styled.ol``;

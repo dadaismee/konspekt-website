@@ -26,6 +26,7 @@ const Menu = ({ menuStyles, buttonStyles, isOpen, handleClick }) => {
           title={item.title}
           link={item.link}
           buttonStyles={buttonStyles}
+          soon={item.soon}
           key={index}
         />
       ))}

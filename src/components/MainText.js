@@ -8,7 +8,7 @@ const MainText = ({ image, tagline, text }) => {
     <Wrapper>
       <Image src={image} />
       <Tagline>{tagline}</Tagline>
-      <Text>{text}</Text>
+      <Text dangerouslySetInnerHTML={{ __html: text }} />
     </Wrapper>
   );
 };
@@ -18,6 +18,7 @@ export default MainText;
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  justify-content: stretch;
   gap: 25px; //25px
 
   @media (max-width: ${mediaQueries.tablet}) {
@@ -41,6 +42,13 @@ const Text = styled(bodyIntro)`
   max-width: 578.72px;
   width: 40vw;
 
+  display: grid;
+  gap: 2vh;
+
+  ul {
+    list-style-type: disc;
+    margin: -2vh 1.5vw 0vh 1.5vw;
+  }
   @media (max-width: ${mediaQueries.tablet}) {
     width: auto;
     grid-column-start: 1;

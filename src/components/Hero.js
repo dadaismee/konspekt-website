@@ -1,13 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "gatsby";
 import { heading1, heading4 } from "../styles/TextStyles";
 import { colors } from "../styles/ColorStyles";
-import { mainShadow, mediaQueries } from "../styles/GlobalStyles";
-import { opacityAnimation, RombOpacityAnimation } from "./Animations";
+import {
+  cssForRombAnimation,
+  mainShadow,
+  mediaQueries,
+} from "../styles/GlobalStyles";
+import { opacityAnimation, RombOpacityAnimation, RombCSS } from "./Animations";
 import { PatternImage } from "./components_index";
 
-const Hero = ({ taglineText }) => {
+const Hero = ({ taglineText, handleClick }) => {
   return (
     <>
       <Wrapper>
@@ -19,13 +22,14 @@ const Hero = ({ taglineText }) => {
         </TaglineWrapper>
         <TextWrapper>
           <Subtext>
-            Streamline your work <br />
-            with <span>toolchains</span> <br />
+            Learn the <span>workflow</span> <br />
+            and use <span>toolchains</span> <br />
             that do the job <br />
           </Subtext>
-          <Link to="/course">
-            <Button>Enroll in a workshop</Button>
-          </Link>
+          <Button onClick={handleClick}>
+            Sign up
+            <br /> for early access
+          </Button>
         </TextWrapper>
       </Wrapper>
       <PatternImage />
@@ -64,7 +68,7 @@ const TaglineWrapper = styled.div`
     ${colors.yellow40} 100%
   );
   background-repeat: no-repeat;
-  width: 46vw;
+  width: 48vw;
   height: 18vw;
 
   transform: skewX(160deg);
@@ -116,7 +120,9 @@ const Subtext = styled(heading4)`
   animation-delay: 1.5s;
 
   span {
-    color: ${colors.pink100};
+    ${cssForRombAnimation(colors.yellow100)};
+    animation: ${RombCSS};
+    animation-delay: 1.95s;
   }
 
   @media (max-width: ${mediaQueries.tablet}) {

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "gatsby";
 import { colors } from "../styles/ColorStyles";
 import { mediaQueries } from "../styles/GlobalStyles";
 import { bodyIntro, bodyText } from "../styles/TextStyles";
@@ -19,7 +20,7 @@ const cardType = {
       display: "flex",
       flexDirection: "column",
       width: "39.7vw", //573px
-      height: "64vh", //696px
+      // height: "64vh", //696px
     },
   },
   whatChoose: {
@@ -44,11 +45,13 @@ const ContentCard = ({ color, cardData }) => {
       </TextWrapper>
       <ButtonWrapper>
         {cardData.price && <Price>{cardData.price}</Price>}
-        <Button
-          bgColor={colors.pink100}
-          txtColor={colors.textWhite}
-          text="Buy"
-        />
+        <Link to={cardData.link}>
+          <Button
+            bgColor={cardData.buttonColor}
+            txtColor={cardData.buttonTxtColor}
+            text={cardData.buttonText}
+          />
+        </Link>
       </ButtonWrapper>
     </Wrapper>
   );

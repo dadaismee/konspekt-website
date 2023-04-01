@@ -1,31 +1,41 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { heading2 } from "../styles/TextStyles";
 import { cssForRombAnimation, mediaQueries } from "../styles/GlobalStyles";
 import { RombCSS } from "./Animations";
 
 const CenterHeading = ({ headingText, color, align }) => {
-  const [hasScrolled, setHasScrolled] = useState(false);
+  function useOnScreen(ref, rootMargin = "0px") {
+    const [isIntersecting, setIntersecting] = useState(false);
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          setIntersecting(entry.isIntersecting);
+        },
+        {
+          rootMargin,
+        }
+      );
+      if (ref.current) {
+        observer.observe(ref.current);
+      }
+      return () => {
+        observer.unobserve(ref.current);
+      };
+    }, []);
+    return isIntersecting;
+  }
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 500;
-      if (isScrolled !== hasScrolled) setHasScrolled(true);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [hasScrolled]);
+  const ref = useRef();
+  const onScreen = useOnScreen(ref, "0px");
 
   return (
     <Wrapper align={align}>
       <FirstLine
         isAnimated={headingText.first.isAnimated}
         color={color}
-        hasScrolled={hasScrolled}
+        hasScrolled={onScreen}
+        ref={ref}
       >
         <Heading
           isBold={headingText.first.isBold}
@@ -37,7 +47,8 @@ const CenterHeading = ({ headingText, color, align }) => {
       <SecondLine
         isAnimated={headingText.second.isAnimated}
         color={color}
-        hasScrolled={hasScrolled}
+        hasScrolled={onScreen}
+        ref={ref}
       >
         <Heading
           isBold={headingText.second.isBold}
@@ -49,7 +60,8 @@ const CenterHeading = ({ headingText, color, align }) => {
       <ThirdLine
         isAnimated={headingText.third.isAnimated}
         color={color}
-        hasScrolled={hasScrolled}
+        hasScrolled={onScreen}
+        ref={ref}
       >
         <Heading
           isBold={headingText.third.isBold}
@@ -61,7 +73,8 @@ const CenterHeading = ({ headingText, color, align }) => {
       <FourthLine
         isAnimated={headingText.fourth.isAnimated}
         color={color}
-        hasScrolled={hasScrolled}
+        hasScrolled={onScreen}
+        ref={ref}
       >
         <Heading
           isBold={headingText.fourth.isBold}

@@ -54,4 +54,4 @@ const pack = () => {
 };
 
 export default pack;
-export const Head = () => <title>Konspekt Obsidian Pack</title>;
+export const Head = () => <title>Konspekt Toolchain</title>;

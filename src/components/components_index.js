@@ -12,3 +12,4 @@ export { default as PatternImage } from "./PatternImage";
 export { default as CirriculumCard } from "./CirriculumCard";
 export { default as ContentCard } from "./ContentCard";
 export { default as MenuTooltip } from "./MenuTooltip";
+export { default as SignUpModal } from "./SignUpModal";
