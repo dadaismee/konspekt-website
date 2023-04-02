@@ -22,6 +22,8 @@
     "gatsby-plugin-styled-components": "^6.6.0",
     "gatsby-source-contentful": "^8.8.0",
     "gatsby-transformer-remark": "^6.8.0",
+    "google-spreadsheet": "^3.3.0",
+    "https": "^1.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",

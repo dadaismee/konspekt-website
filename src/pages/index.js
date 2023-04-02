@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { graphql } from "gatsby";
 import styled from "styled-components";
 import {
   Hero,
@@ -11,7 +12,6 @@ import {
 import { colors } from "../styles/ColorStyles";
 import { mediaQueries } from "../styles/GlobalStyles";
 import * as pageData from "../data/indexPageData";
-import { graphql } from "gatsby";
 
 const Index = ({ data }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);

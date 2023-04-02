@@ -1,8 +1,7 @@
 import React from "react";
-import "../index.css";
+import { graphql } from "gatsby";
 import {
   CirriculumCard,
-  Hero,
   Layout,
   PatternImage,
   TextSection,
@@ -38,12 +37,12 @@ const mainText = {
   text: "Research writing is not straightforward in terms of procedure. It can be daunting and complex to grasp, especially when you need to start a new paper and face a blank screen.",
 };
 
-const pack = () => {
+const toolchain = ({ data }) => {
   return (
     <Layout>
       <TextSection
         headingText={heading}
-        mainText={mainText}
+        mainText={data.contentfulMainText}
         color={colors.pink60}
       />
       <PatternImage />
@@ -53,5 +52,18 @@ const pack = () => {
   );
 };
 
-export default pack;
+export default toolchain;
 export const Head = () => <title>Konspekt Toolchain</title>;
+
+export const query = graphql`
+  query MyQuery {
+    contentfulMainText {
+      title
+      text {
+        childMarkdownRemark {
+          html
+        }
+      }
+    }
+  }
+`;

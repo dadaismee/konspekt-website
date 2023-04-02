@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { navigate } from "gatsby";
 import styled from "styled-components";
 
 import { colors } from "../styles/ColorStyles";
@@ -9,6 +10,21 @@ import Button from "./Button";
 import { RiCloseLine } from "react-icons/ri";
 
 const SignUpModal = ({ closeModal }) => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const myForm = event.target;
+    const formData = new FormData(myForm);
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then(() => navigate("/thank-you/"))
+      .catch((error) => alert(error));
+  };
+
   return (
     <>
       <Wrapper>
@@ -21,7 +37,12 @@ const SignUpModal = ({ closeModal }) => {
               toolchain are ready!
             </Description>
           </Text>
-          <CTA>
+          <CTA
+            name="userData"
+            method="POST"
+            data-netlify="true"
+            handleClick={handleSubmit}
+          >
             <Input
               type="text"
               placeholder="Name"
@@ -34,14 +55,13 @@ const SignUpModal = ({ closeModal }) => {
               // value={email}
               // onChange={(e) => setEmail(e.target.value)}
             />
+            <Button
+              type="submit"
+              bgColor="pink80"
+              txtColor="textWhite"
+              text="Sign Up"
+            />
           </CTA>
-          <Button
-            bgColor="pink80"
-            txtColor="textWhite"
-            text="Sign Up"
-            // handleClick={submitEvent}
-            type="submit"
-          />
         </Main>
         <RiCloseLine
           style={{

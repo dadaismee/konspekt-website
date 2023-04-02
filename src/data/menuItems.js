@@ -4,16 +4,16 @@ export const menuItems = [
     link: "/",
     soon: false,
   },
-  // {
-  //   title: "Course",
-  //   link: "/course",
-  //   soon: true,
-  // },
-  // {
-  //   title: "Toolchain",
-  //   link: "/toolchain",
-  //   soon: true,
-  // },
+  {
+    title: "Course",
+    link: "/course",
+    soon: true,
+  },
+  {
+    title: "Toolchain",
+    link: "/toolchain",
+    soon: true,
+  },
   // {
   //   title: "Meetup",
   //   link: "/meetup",
@@ -24,9 +24,9 @@ export const menuItems = [
   //   link: "/blog",
   //   soon: false,
   // },
-  // {
-  //   title: "About",
-  //   link: "/about",
-  //   soon: false,
-  // },
+  {
+    title: "About",
+    link: "/about",
+    soon: false,
+  },
 ];
