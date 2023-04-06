@@ -1,34 +1,36 @@
-import React, { useEffect, useState } from "react";
-import { navigate } from "gatsby";
-import styled from "styled-components";
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
-import { colors } from "../styles/ColorStyles";
-import { mainShadow } from "../styles/GlobalStyles";
-import { heading2, smallText } from "../styles/TextStyles";
-import { opacityAnimation } from "./Animations";
-import Button from "./Button";
-import { RiCloseLine } from "react-icons/ri";
+import { colors } from '../styles/ColorStyles';
+import { mainShadow } from '../styles/GlobalStyles';
+import { heading2, smallText } from '../styles/TextStyles';
+import { opacityAnimation } from './Animations';
+import Button from './Button';
+import { RiCloseLine } from 'react-icons/ri';
 
 const SignUpModal = ({ closeModal }) => {
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
 
-    const myForm = event.target;
-    const formData = new FormData(myForm);
-
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(formData).toString(),
-    })
-      .then(() => navigate("/thank-you/"))
-      .catch((error) => alert(error));
+  const handleSubmit = () => {
+    fetch('/.netlify/functions/sendToSheets', {
+      method: 'POST',
+      body: JSON.stringify({
+        Name: name,
+        Email: email,
+        Date: new Date(),
+      }),
+    });
   };
+
+  useEffect(() => {
+    handleSubmit();
+  }, []);
 
   return (
     <>
       <Wrapper>
-        <Image src="/images/graphics/modalPattern.svg" alt="pattern" />
+        <Image src='/images/graphics/modalPattern.svg' alt='pattern' />
         <Main>
           <Text>
             <Heading>Sign Up</Heading>
@@ -37,39 +39,40 @@ const SignUpModal = ({ closeModal }) => {
               toolchain are ready!
             </Description>
           </Text>
-          <CTA
-            name="userData"
-            method="POST"
-            data-netlify="true"
-            handleClick={handleSubmit}
-          >
+          <CTA>
             <Input
-              type="text"
-              placeholder="Name"
-              // value={name}
-              // onChange={(e) => setName(e.target.value)}
+              type='text'
+              placeholder='Name'
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
             />
             <Input
-              type="email"
-              placeholder="Email"
-              // value={email}
-              // onChange={(e) => setEmail(e.target.value)}
+              type='email'
+              placeholder='Email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
             />
             <Button
-              type="submit"
-              bgColor="pink80"
-              txtColor="textWhite"
-              text="Sign Up"
+              type='submit'
+              bgColor={Boolean(name) && Boolean(email) ? 'pink80' : '#282828'}
+              txtColor='textWhite'
+              text='Sign Up'
+              handleClick={
+                Boolean(name) && Boolean(email) ? handleSubmit : null
+              }
+              allowed={email && name}
             />
           </CTA>
         </Main>
         <RiCloseLine
           style={{
-            position: "absolute",
-            fontSize: "24px",
-            color: "#282828",
-            top: "20px",
-            right: "20px",
+            position: 'absolute',
+            fontSize: '24px',
+            color: '#282828',
+            top: '20px',
+            right: '20px',
           }}
           onClick={closeModal}
         />
@@ -143,7 +146,7 @@ const Heading = styled(heading2)`
 `;
 
 const Description = styled(smallText)`
-  color: "#282828";
+  color: '#282828';
   opacity: 65%;
   line-height: 120%;
 `;
@@ -158,7 +161,7 @@ const Input = styled.input`
   background-color: ${colors.textWhite};
 
   ::placeholder {
-    color: "#282828";
+    color: '#282828';
     opacity: 65%;
   }
 `;

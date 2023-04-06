@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import { colors } from "../styles/ColorStyles";
-import { mediaQueries, mainShadow } from "../styles/GlobalStyles";
+import React from 'react';
+import styled from 'styled-components';
+import { colors } from '../styles/ColorStyles';
+import { mediaQueries, mainShadow } from '../styles/GlobalStyles';
 
 // const type = {
 //   hero: {
@@ -15,13 +15,14 @@ import { mediaQueries, mainShadow } from "../styles/GlobalStyles";
 //   },
 // };
 
-const Button = ({ bgColor, txtColor, text, type, handleClick }) => {
+const Button = ({ bgColor, txtColor, text, type, handleClick, allowed }) => {
   return (
     <Wrapper
       bgColor={bgColor}
       txtColor={txtColor}
       type={type}
       onClick={handleClick}
+      allowed={allowed}
     >
       {text}
     </Wrapper>
@@ -40,13 +41,13 @@ const Wrapper = styled.button`
   font-weight: 700;
   font-size: 1.6vw; //24px // 1.6vw
   transition: all 0.25s;
-  /* ${({ type }) => (type === "hero" ? type.hero : type.normal)}; */
+  /* ${({ type }) => (type === 'hero' ? type.hero : type.normal)}; */
 
   :hover {
     /* color: ${colors.textBlack}; */
     transform: translateY(-5px);
     box-shadow: ${mainShadow};
-    cursor: pointer;
+    cursor: ${({ allowed }) => (allowed ? 'pointer' : 'not-allowed')};
   }
 
   :active {
