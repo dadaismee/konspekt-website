@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { MainText } from "./components_index";
+import React from 'react';
+import styled from 'styled-components';
+import { MainText } from './components_index';
 
 const TextSection = ({ mainText, image }) => {
   return (

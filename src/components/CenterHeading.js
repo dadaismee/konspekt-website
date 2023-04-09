@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
-import styled from "styled-components";
-import { heading2 } from "../styles/TextStyles";
-import { cssForRombAnimation, mediaQueries } from "../styles/GlobalStyles";
-import { RombCSS } from "./Animations";
+import React, { useState, useEffect, useRef } from 'react';
+import styled from 'styled-components';
+import { heading2 } from '../styles/TextStyles';
+import { cssForRombAnimation, mediaQueries } from '../styles/GlobalStyles';
+import { RombCSS } from './Animations';
 
 const CenterHeading = ({ headingText, color, align }) => {
-  function useOnScreen(ref, rootMargin = "0px") {
+  function useOnScreen(ref, rootMargin = '0px') {
     const [isIntersecting, setIntersecting] = useState(false);
     useEffect(() => {
       const observer = new IntersectionObserver(
@@ -19,15 +19,15 @@ const CenterHeading = ({ headingText, color, align }) => {
       if (ref.current) {
         observer.observe(ref.current);
       }
-      return () => {
-        observer.unobserve(ref.current);
-      };
+      // return () => {
+      //   observer.unobserve(ref.current);
+      // };
     }, []);
     return isIntersecting;
   }
 
   const ref = useRef();
-  const onScreen = useOnScreen(ref, "0px");
+  const onScreen = useOnScreen(ref, '0px');
 
   return (
     <Wrapper align={align}>
@@ -98,13 +98,13 @@ const Wrapper = styled.div`
   @media (max-width: ${mediaQueries.phone}) {
     display: flex;
     flex-direction: column;
-    align-items: ${({ align }) => (align === "center" ? "center" : "start")};
+    align-items: ${({ align }) => (align === 'center' ? 'center' : 'start')};
   }
 `;
 
 const Heading = styled(heading2)`
   font-weight: ${(props) => (props.isBold === true ? 700 : 500)};
-  transform: ${(props) => (props.isAnimated === true ? "skew(20deg)" : "none")};
+  transform: ${(props) => (props.isAnimated === true ? 'skew(20deg)' : 'none')};
   /* background-color: red; */
 `;
 
