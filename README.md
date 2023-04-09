@@ -1,11 +1,8 @@
 <p align="center">
-  <a href="https://konspekt.netlify.app">
-    <img alt="Konspekt" src="/static/images/logo.svg" width="60" />
-  </a>
+  <img alt="Konspekt" src="/static/images/logo.svg" width="60" />
 </p>
-<h1 align="center">
-  Konspekt
-</h1>
+
+# Konspekt
 
 ## A project about sustainable academic writing
 
