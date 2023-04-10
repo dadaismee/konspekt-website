@@ -79,7 +79,7 @@ const course = ({ data }) => {
       <CirriculumCard /> */}
       <TextSection
         headingText={headingInstructor}
-        mainText={mainTextInstructor}
+        mainText={data.contentfulMainText}
         color={colors.green100}
       />
       {/* <Button /> */}
