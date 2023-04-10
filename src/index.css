@@ -1,7 +1,30 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
+@font-face {
+  font-family: 'Helvetica Neue';
+  font-weight: 400;
+  src: local('Helvetica Neue'), url('./fonts/HelveticaNeueReg.ttf'),
+    format('truetype');
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  font-weight: 300;
+  src: local('Helvetica Neue'), url('./fonts/HelveticaNeueLight.ttf'),
+    format('truetype');
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  font-weight: 600;
+  src: local('Helvetica Neue'), url('./fonts/HelveticaNeueMed.ttf'),
+    format('truetype');
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  font-weight: 700;
+  src: local('Helvetica Neue'), url('./fonts/HelveticaNeueBd.ttf'),
+    format('truetype');
+}
 
 :root {
   --section-padding: 2.7vh 7vw;
@@ -113,7 +136,7 @@ section {
 body {
   line-height: 1;
   font-size: 16px;
-  font-family: "Helvetica";
+  font-family: 'Helvetica Neue';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -129,7 +152,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
+  content: '';
   content: none;
 }
 table {
