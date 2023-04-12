@@ -1,26 +1,26 @@
 export const taglineText = {
-  firstLine: "Academic writing",
-  secondLine: "as it should be",
+  firstLine: 'Academic writing',
+  secondLine: 'as it should be',
 };
 
 export const heading = {
   first: {
-    title: "Konspekt",
+    title: 'Konspekt',
     isBold: true,
     isAnimated: false,
   },
   second: {
-    title: "is a project about",
+    title: 'is a project about',
     isBold: false,
     isAnimated: false,
   },
   third: {
-    title: "sustainable",
+    title: 'sustainable',
     isBold: true,
     isAnimated: true,
   },
   fourth: {
-    title: "research writing",
+    title: 'research writing',
     isBold: false,
     isAnimated: false,
   },
@@ -28,30 +28,30 @@ export const heading = {
 
 export const cardData = [
   {
-    type: "product",
-    subtype: "normal",
-    color: "green80",
-    image: "/images/pictures/zoom pic.jpeg",
-    title: "Konspekt video course",
-    text: "The workshop is a 2-day Zoom study session with a teacher, where you will learn and practice:",
-    price: "$25",
-    buttonText: "Learn more",
-    link: "/course",
-    buttonColor: "pink100",
-    buttonTxtColor: "textWhite",
+    type: 'product',
+    subtype: 'normal',
+    color: 'green80',
+    image: '/images/pictures/zoom pic.jpeg',
+    title: 'Konspekt video course',
+    text: 'The workshop is a 2-day Zoom study session with a teacher, where you will learn and practice:',
+    price: '$25',
+    buttonText: 'Learn more',
+    link: '/course',
+    buttonColor: 'pink100',
+    buttonTxtColor: 'textWhite',
   },
   {
-    type: "product",
-    subtype: "normal",
-    color: "pink80",
-    image: "/images/pictures/obsidian.png",
-    title: "Obsidian Pack",
-    text: "Obsidian Pack is a prepared and fully set up vault with bare essentials for a Konspekt method:",
-    price: "$25",
-    buttonText: "Learn more",
-    link: "/toolchain",
-    buttonColor: "yellow100",
-    buttonTxtColor: "textBlack",
+    type: 'product',
+    subtype: 'normal',
+    color: 'pink80',
+    image: '/images/pictures/obsidian.png',
+    title: 'Obsidian Pack',
+    text: 'Obsidian Pack is a prepared and fully set up vault with bare essentials for a Konspekt method:',
+    price: '$25',
+    buttonText: 'Learn more',
+    link: '/toolchain',
+    buttonColor: 'yellow100',
+    buttonTxtColor: 'textBlack',
   },
   // {
   //   type: "product",
@@ -69,46 +69,46 @@ export const cardData = [
 
 export const chooseCardData = [
   {
-    type: "whatChoose",
-    color: "green80",
-    image: "/images/graphics/stack_pink_card.svg",
-    title: "Choose course",
-    text: "If you want to get the system with the help of a tutor and community",
+    type: 'whatChoose',
+    color: 'green80',
+    image: '/images/graphics/stack_pink_card.svg',
+    title: 'Choose course',
+    text: 'If you want to get the system with the help of a tutor and community',
   },
   {
-    type: "whatChoose",
-    color: "pink80",
-    image: "/images/graphics/stack_yellow_card.svg",
-    title: "Choose Obsidian Pack",
-    text: "If you want to get the resources of the system and set it up on your own ",
+    type: 'whatChoose',
+    color: 'pink80',
+    image: '/images/graphics/stack_yellow_card.svg',
+    title: 'Choose Obsidian Pack',
+    text: 'If you want to get the resources of the system and set it up on your own ',
   },
   {
-    type: "whatChoose",
-    color: "yellow80",
-    image: "/images/graphics/stack_green_card.svg",
-    title: "Blog & Newsletter",
-    text: "If you want to learn about best practices and lifehacks in research and academic writing",
+    type: 'whatChoose',
+    color: 'yellow80',
+    image: '/images/graphics/stack_green_card.svg',
+    title: 'Blog & Newsletter',
+    text: 'If you want to learn about best practices and lifehacks in research and academic writing',
   },
 ];
 
 export const paperAsSource = {
   first: {
-    title: "Your papers",
+    title: 'Your papers',
     isBold: true,
     isAnimated: false,
   },
   second: {
-    title: "are",
+    title: 'are',
     isBold: false,
     isAnimated: false,
   },
   third: {
-    title: "source code",
+    title: 'source code',
     isBold: true,
     isAnimated: true,
   },
   fourth: {
-    title: "",
+    title: '',
     isBold: false,
     isAnimated: false,
   },
@@ -116,22 +116,22 @@ export const paperAsSource = {
 
 export const chooseHeading = {
   first: {
-    title: "What",
+    title: 'What',
     isBold: true,
     isAnimated: false,
   },
   second: {
-    title: "should",
+    title: 'should',
     isBold: false,
     isAnimated: false,
   },
   third: {
-    title: "you",
+    title: 'you',
     isBold: false,
     isAnimated: false,
   },
   fourth: {
-    title: "choose",
+    title: 'choose',
     isBold: true,
     isAnimated: true,
   },

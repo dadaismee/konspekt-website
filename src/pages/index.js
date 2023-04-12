@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { graphql } from "gatsby";
-import styled from "styled-components";
+import React, { useState } from 'react';
+import { graphql } from 'gatsby';
+import styled from 'styled-components';
 import {
   Hero,
   Layout,
@@ -8,10 +8,10 @@ import {
   ContentCard,
   CenterHeading,
   SignUpModal,
-} from "../components/components_index";
-import { colors } from "../styles/ColorStyles";
-import { mediaQueries } from "../styles/GlobalStyles";
-import * as pageData from "../data/indexPageData";
+} from '../components/components_index';
+import { colors } from '../styles/ColorStyles';
+import { mediaQueries } from '../styles/GlobalStyles';
+import * as pageData from '../data/indexPageData';
 
 const Index = ({ data }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -26,17 +26,17 @@ const Index = ({ data }) => {
       <CenterHeading headingText={pageData.heading} color={colors.yellow80} />
       <TextSection
         mainText={data.contentfulMainText}
-        image="/images/graphics/pattern_typography.svg"
+        image='/images/graphics/pattern_typography.svg'
       />
-      <ExplainImage src="/images//pictures/explanation.png" alt="explanation" />
+      <ExplainImage src='/images//pictures/explanation.png' alt='explanation' />
       <CenterHeading
         headingText={pageData.paperAsSource}
         color={colors.pink80}
       />
-      <CardGrid type="product">
+      <CardGrid type='product'>
         {pageData.cardData.map((card, index) => (
           <ContentCard
-            type="product"
+            type='product'
             subtype={card.subtype}
             color={colors[`${card.color}`]}
             cardData={card}
@@ -67,9 +67,9 @@ const Index = ({ data }) => {
 const CardGrid = styled.div`
   display: grid;
   grid-template-columns: ${({ type }) =>
-    type === "product"
-      ? "repeat(2, auto); column-gap: 12vh"
-      : "repeat(3, auto); gap: 5vh"};
+    type === 'product'
+      ? 'repeat(2, auto); column-gap: 12vh'
+      : 'repeat(3, auto); gap: 5vh'};
   row-gap: 5.55vh; //60px;
   padding: var(--section-padding);
   justify-content: space-around;

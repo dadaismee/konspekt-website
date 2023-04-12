@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useForm } from 'react-hook-form';
+import Confetti from 'react-confetti';
 
 import { colors } from '../styles/ColorStyles';
 import { mainShadow } from '../styles/GlobalStyles';
@@ -9,63 +11,85 @@ import Button from './Button';
 import { RiCloseLine } from 'react-icons/ri';
 
 const SignUpModal = ({ closeModal }) => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = () => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  let name = watch('name');
+  let email = watch('email');
+
+  const onSubmit = () => {
     fetch('/.netlify/functions/sendToSheets', {
       method: 'POST',
       body: JSON.stringify({
         Name: name,
         Email: email,
-        Date: new Date(),
+        Date: Date(),
       }),
     });
+    setIsSubmitted(true);
   };
-
-  useEffect(() => {
-    handleSubmit();
-  }, []);
 
   return (
     <>
+      {isSubmitted && <Confetti />}
       <Wrapper>
         <Image src='/images/graphics/modalPattern.svg' alt='pattern' />
-        <Main>
-          <Text>
-            <Heading>Sign Up</Heading>
-            <Description>
-              Leave your email, we will notify you when the course and the
-              toolchain are ready!
-            </Description>
-          </Text>
-          <CTA>
-            <Input
-              type='text'
-              placeholder='Name'
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-            <Input
-              type='email'
-              placeholder='Email'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <Button
-              type='submit'
-              bgColor={Boolean(name) && Boolean(email) ? 'pink80' : '#282828'}
-              txtColor='textWhite'
-              text='Sign Up'
-              handleClick={
-                Boolean(name) && Boolean(email) ? handleSubmit : null
-              }
-              allowed={email && name}
-            />
-          </CTA>
-        </Main>
+        {isSubmitted === false ? (
+          <Main>
+            <Text>
+              <Heading>Sign Up</Heading>
+              <Description>
+                Leave your email, we will notify you when the course and the
+                toolchain are ready!
+              </Description>
+            </Text>
+            <CTA onSubmit={handleSubmit(onSubmit)}>
+              <Input
+                type='text'
+                placeholder='Name'
+                {...register('name', {
+                  required: true,
+                  maxLength: 20,
+                  pattern: /^[a-zA-Z]+/g,
+                })}
+              />
+              {errors.name && <p>Enter a valid name</p>}
+              <Input
+                type='email'
+                placeholder='Email'
+                {...register('email', {
+                  required: true,
+                  pattern:
+                    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                })}
+              />
+              {errors.email && <p>Enter a valid email</p>}
+              <Button
+                type='submit'
+                bgColor={Boolean(name) && Boolean(email) ? 'pink80' : '#282828'}
+                txtColor='textWhite'
+                text='Sign Up'
+                allowed={email && name}
+              />
+            </CTA>
+          </Main>
+        ) : (
+          <Main>
+            <Text>
+              <Heading>Thank you!</Heading>
+              <Description>
+                We will notify you when <span>Konspekt</span> course or
+                toolchain are released. Stay tuned!{' '}
+              </Description>
+            </Text>
+          </Main>
+        )}
         <RiCloseLine
           style={{
             position: 'absolute',
@@ -125,6 +149,11 @@ const CTA = styled.form`
   display: grid;
   grid-template-rows: auto;
   gap: 10px;
+
+  p {
+    margin-left: 1vw;
+    color: '#282828';
+  }
 `;
 
 const Overlay = styled.div`
@@ -149,6 +178,10 @@ const Description = styled(smallText)`
   color: '#282828';
   opacity: 65%;
   line-height: 120%;
+
+  span {
+    font-weight: 700;
+  }
 `;
 
 const Input = styled.input`
