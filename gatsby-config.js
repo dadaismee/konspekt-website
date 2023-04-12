@@ -10,14 +10,20 @@ module.exports = {
   plugins: [
     `gatsby-transformer-remark`,
     `gatsby-plugin-react-helmet`,
-    "gatsby-plugin-styled-components",
-    "gatsby-plugin-netlify",
-    "gatsby-plugin-image",
+    'gatsby-plugin-styled-components',
+    'gatsby-plugin-netlify',
+    'gatsby-plugin-image',
     {
-      resolve: "gatsby-source-contentful",
+      resolve: 'gatsby-source-contentful',
       options: {
-        spaceId: "vo3bhh1p1b92",
-        accessToken: "NuruLt_nRhiCqt9s6jRSy4sUN1VrzbpwfpZdQdcu5E8",
+        spaceId: 'vo3bhh1p1b92',
+        accessToken: 'NuruLt_nRhiCqt9s6jRSy4sUN1VrzbpwfpZdQdcu5E8',
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        icon: 'static/images/favicon.svg',
       },
     },
   ],
