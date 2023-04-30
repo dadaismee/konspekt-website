@@ -26,7 +26,7 @@ const Index = ({ data }) => {
       {modalIsOpen && <SignUpModal closeModal={() => setModalIsOpen(false)} />}
       <CenterHeading headingText={pageData.heading} color={colors.yellow80} />
       <TextSection
-        mainText={data.allContentfulMainText.nodes[0]}
+        mainText={data.allContentfulMainText.nodes[1]}
         image='images/graphics/pattern_typography.svg'
       />
       <CardGrid type='product'>
@@ -42,7 +42,7 @@ const Index = ({ data }) => {
         ))}
       </CardGrid>
       <CenterHeading headingText={pageData.whatWrong} color={colors.pink80} />
-      <TextSection mainText={data.allContentfulMainText.nodes[1]} image='' />
+      <TextSection mainText={data.allContentfulMainText.nodes[0]} image='' />
       <ExplainImage src='/images//pictures/explanation.png' alt='explanation' />
       {/* Add a screen-wide sig-up button */}
       {/* <Button
