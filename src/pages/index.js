@@ -8,6 +8,7 @@ import {
   ContentCard,
   CenterHeading,
   SignUpModal,
+  Button,
 } from '../components/components_index';
 import { colors } from '../styles/ColorStyles';
 import { mediaQueries } from '../styles/GlobalStyles';
@@ -25,16 +26,11 @@ const Index = ({ data }) => {
       {modalIsOpen && <SignUpModal closeModal={() => setModalIsOpen(false)} />}
       <CenterHeading headingText={pageData.heading} color={colors.yellow80} />
       <TextSection
-        mainText={data.contentfulMainText}
-        image='/images/graphics/pattern_typography.svg'
-      />
-      <ExplainImage src='/images//pictures/explanation.png' alt='explanation' />
-      <CenterHeading
-        headingText={pageData.paperAsSource}
-        color={colors.pink80}
+        mainText={data.allContentfulMainText.nodes[0]}
+        image='images/graphics/pattern_typography.svg'
       />
       <CardGrid type='product'>
-        {pageData.cardData.map((card, index) => (
+        {data.allContentfulContentCard.nodes.map((card, index) => (
           <ContentCard
             type='product'
             subtype={card.subtype}
@@ -45,6 +41,18 @@ const Index = ({ data }) => {
           />
         ))}
       </CardGrid>
+      <CenterHeading headingText={pageData.whatWrong} color={colors.pink80} />
+      <TextSection mainText={data.allContentfulMainText.nodes[1]} image='' />
+      <ExplainImage src='/images//pictures/explanation.png' alt='explanation' />
+      {/* Add a screen-wide sig-up button */}
+      {/* <Button
+        bgColor={colors.green}
+        txtColor={colors.textBlack}
+        handleClick={() => setModalIsOpen(true)}
+        type='normal'
+        text='Sign Up'
+      /> */}
+      ***
       {/* <CenterHeading
         headingText={pageData.chooseHeading}
         color={colors.green80}
@@ -89,14 +97,30 @@ const ExplainImage = styled.img`
 export default Index;
 export const Head = () => <title>Konspekt</title>;
 
+// (filter: { title: { eq: "What we do" } })
 export const query = graphql`
-  query MyQuery {
-    contentfulMainText {
-      title
-      text {
-        childMarkdownRemark {
-          html
+  query indexPageQuery {
+    allContentfulMainText {
+      nodes {
+        title
+        text {
+          childMarkdownRemark {
+            html
+          }
         }
+      }
+    }
+    allContentfulContentCard {
+      nodes {
+        title
+        text {
+          childMarkdownRemark {
+            html
+          }
+        }
+        buttonText
+        color
+        subtype
       }
     }
   }

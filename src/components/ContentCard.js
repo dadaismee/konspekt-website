@@ -41,14 +41,18 @@ const ContentCard = ({ color, cardData }) => {
       <Image type={cardData.type} src={cardData.image} />
       <TextWrapper>
         <Title>{cardData.title}</Title>
-        <Text dangerouslySetInnerHTML={{ __html: cardData.text }} />
+        <Text
+          dangerouslySetInnerHTML={{
+            __html: cardData.text.childMarkdownRemark.html,
+          }}
+        />
       </TextWrapper>
       <ButtonWrapper>
         {cardData.price && <Price>{cardData.price}</Price>}
         <Link to={cardData.link}>
           <Button
             bgColor={cardData.buttonColor}
-            txtColor={cardData.buttonTxtColor}
+            txtColor={cardData.buttonTextColor}
             text={cardData.buttonText}
           />
         </Link>
@@ -68,6 +72,7 @@ const Wrapper = styled.div`
       : cardType.product.normal};
   gap: 3.77vh; //40px;
   padding: 2.77vw; //40px
+  width: 100%;
 
   box-shadow: 5px 20px 40px rgba(0, 0, 0, 0.25);
   background-color: ${({ color }) => color};
@@ -101,7 +106,32 @@ const Title = styled(bodyIntro)`
   font-weight: 700;
 `;
 
-const Text = styled(bodyText)``;
+const Text = styled(bodyText)`
+  font-weight: 500;
+  font-size: 1.38vw; //20px;
+  line-height: 150%;
+
+  p {
+    margin-top: 0.69vw;
+  }
+
+  h4 {
+    font-size: 2vw; // 32px
+    line-height: 120%;
+    font-weight: 700;
+    margin: 32px 0 16px 0;
+  }
+
+  ul {
+    list-style-type: disc;
+    margin: 0.69vw 1.5vw 0vh 1.5vw;
+  }
+  @media (max-width: ${mediaQueries.tablet}) {
+    width: auto;
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+`;
 
 const ButtonWrapper = styled.div`
   display: flex;

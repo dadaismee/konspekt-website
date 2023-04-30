@@ -55,7 +55,7 @@ export const bodyIntro = styled.p`
   font-style: normal;
   font-weight: 500;
   font-size: 1.6vw; //23.4615px;
-  line-height: 130%;
+  line-height: 145%;
   color: ${colors.textBlack};
 
   @media (max-width: ${mediaQueries.tablet}) {

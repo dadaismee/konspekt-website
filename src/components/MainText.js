@@ -1,14 +1,14 @@
-import React from "react";
-import styled from "styled-components";
-import { mediaQueries } from "../styles/GlobalStyles";
-import { bodyIntro, heading3 } from "../styles/TextStyles";
+import React from 'react';
+import styled from 'styled-components';
+import { mediaQueries } from '../styles/GlobalStyles';
+import { bodyIntro, heading3 } from '../styles/TextStyles';
 
 const MainText = ({ image, tagline, text }) => {
   return (
-    <Wrapper>
-      <Image src={image} />
-      <Tagline>{tagline}</Tagline>
-      <Text dangerouslySetInnerHTML={{ __html: text }} />
+    <Wrapper image={image} tagline={tagline}>
+      {image && <Image src={image} />}
+      {tagline && <Tagline>{tagline}</Tagline>}
+      <Text tagline={tagline} dangerouslySetInnerHTML={{ __html: text }} />
     </Wrapper>
   );
 };
@@ -17,8 +17,14 @@ export default MainText;
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  justify-content: stretch;
+  grid-template-columns: ${({ image, tagline }) =>
+    Boolean(image) && Boolean(tagline)
+      ? 'repeat(3, 1fr)'
+      : Boolean(tagline)
+      ? 'repeat(3, 1fr)'
+      : '60vw'};
+  justify-content: center;
+  place-items: start center;
   gap: 25px; //25px
 
   @media (max-width: ${mediaQueries.tablet}) {
@@ -27,10 +33,14 @@ const Wrapper = styled.div`
   }
 `;
 
-const Image = styled.img`
-  max-width: 305px;
-  width: 21vw;
+const ImageWrapper = styled.div`
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 16px;
+  place-content: start center;
+`;
 
+const Image = styled.img`
   @media (max-width: ${mediaQueries.tablet}) {
     width: 42vw;
   }
@@ -39,15 +49,26 @@ const Image = styled.img`
 const Tagline = styled(heading3)``;
 
 const Text = styled(bodyIntro)`
-  max-width: 578.72px;
-  width: 40vw;
+  ${({ tagline }) =>
+    Boolean(tagline) ? 'max-width: 578.72px; width: 50vw;' : 'max-width: auto'}
+  font-weight: 500;
+  font-size: 1.38vw; //20px;
+  line-height: 150%;
 
-  display: grid;
-  gap: 2vh;
+  p {
+    margin-top: 0.69vw;
+  }
+
+  h4 {
+    font-size: 2vw; // 32px
+    line-height: 120%;
+    font-weight: 700;
+    margin: 32px 0 16px 0;
+  }
 
   ul {
     list-style-type: disc;
-    margin: -2vh 1.5vw 0vh 1.5vw;
+    margin: 0.69vw 1.5vw 0vh 1.5vw;
   }
   @media (max-width: ${mediaQueries.tablet}) {
     width: auto;

@@ -22,6 +22,7 @@
     "gatsby-plugin-netlify": "^5.1.0",
     "gatsby-plugin-react-helmet": "^6.8.0",
     "gatsby-plugin-styled-components": "^6.6.0",
+    "gatsby-remark-mermaid": "^3.0.1",
     "gatsby-source-contentful": "^8.8.0",
     "gatsby-transformer-remark": "^6.8.0",
     "google-spreadsheet": "^3.3.0",

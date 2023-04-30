@@ -8,11 +8,11 @@ module.exports = {
     keywords: `academic writing, research writing, workflow, toolchain, PKM, personal knowledge management, Zettelkasten, latex, pandoc, markdown, konspekt, conspectus`,
   },
   plugins: [
-    `gatsby-transformer-remark`,
     `gatsby-plugin-react-helmet`,
     'gatsby-plugin-styled-components',
     'gatsby-plugin-netlify',
     'gatsby-plugin-image',
+    `gatsby-transformer-remark`,
     {
       resolve: 'gatsby-source-contentful',
       options: {

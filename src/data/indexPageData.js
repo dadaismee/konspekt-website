@@ -1,6 +1,6 @@
 export const taglineText = {
-  firstLine: 'Academic writing',
-  secondLine: 'as it should be',
+  firstLine: 'End-to-end',
+  secondLine: 'academic writing',
 };
 
 export const heading = {
@@ -33,7 +33,7 @@ export const cardData = [
     color: 'green80',
     image: '/images/pictures/zoom pic.jpeg',
     title: 'Konspekt video course',
-    text: 'The workshop is a 2-day Zoom study session with a teacher, where you will learn and practice:',
+    text: 'A comprehensive yet concise video course that will guide you to build your own writing workflow. It covers:\n→ Zettelkasten method for note making\n→ setting up a system from scratch. See you!',
     price: '$25',
     buttonText: 'Learn more',
     link: '/course',
@@ -111,6 +111,29 @@ export const paperAsSource = {
     title: '',
     isBold: false,
     isAnimated: false,
+  },
+};
+
+export const whatWrong = {
+  first: {
+    title: 'What is wrong',
+    isBold: true,
+    isAnimated: false,
+  },
+  second: {
+    title: 'with',
+    isBold: false,
+    isAnimated: false,
+  },
+  third: {
+    title: 'current',
+    isBold: true,
+    isAnimated: false,
+  },
+  fourth: {
+    title: 'writing procedure?',
+    isBold: false,
+    isAnimated: true,
   },
 };
 

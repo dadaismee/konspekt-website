@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { MainText } from './components_index';
 
 const TextSection = ({ mainText, image }) => {
+  console.log(mainText);
+
   return (
     <Wrapper>
       <MainText
