@@ -26,7 +26,7 @@ const Index = ({ data }) => {
       {modalIsOpen && <SignUpModal closeModal={() => setModalIsOpen(false)} />}
       <CenterHeading headingText={pageData.heading} color={colors.yellow80} />
       <TextSection
-        mainText={data.allContentfulMainText.nodes[1]}
+        mainText={data.allContentfulMainText.nodes[0]}
         image='images/graphics/pattern_typography.svg'
       />
       <CardGrid type='product'>
@@ -34,15 +34,15 @@ const Index = ({ data }) => {
           <ContentCard
             type='product'
             subtype={card.subtype}
-            color={colors[`${card.color}`]}
             cardData={card}
             key={index}
-            buttonText={card.buttonText}
+            color={colors[`${card.color}`]}
+            // buttonText={card.buttonText}
           />
         ))}
       </CardGrid>
       <CenterHeading headingText={pageData.whatWrong} color={colors.pink80} />
-      <TextSection mainText={data.allContentfulMainText.nodes[0]} image='' />
+      <TextSection mainText={data.allContentfulMainText.nodes[1]} image='' />
       <ExplainImage src='/images//pictures/explanation.png' alt='explanation' />
       {/* Add a screen-wide sig-up button */}
       {/* <Button
@@ -119,8 +119,16 @@ export const query = graphql`
           }
         }
         buttonText
+        buttonColor
         color
         subtype
+        image {
+          gatsbyImageData(
+            placeholder: DOMINANT_COLOR
+            formats: AUTO
+            resizingBehavior: SCALE
+          )
+        }
       }
     }
   }

@@ -5,6 +5,7 @@ import { colors } from '../styles/ColorStyles';
 import { mediaQueries } from '../styles/GlobalStyles';
 import { bodyIntro, bodyText } from '../styles/TextStyles';
 import Button from './Button';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 const cardType = {
   product: {
@@ -36,9 +37,12 @@ const cardType = {
 };
 
 const ContentCard = ({ color, cardData }) => {
+  const img = getImage(cardData.image);
   return (
     <Wrapper type={cardData.type} subtype={cardData.subtype} color={color}>
-      <Image type={cardData.type} src={cardData.image} />
+      {/* <Image type={cardData.type}> */}
+      <GatsbyImage image={img} alt={cardData.title} style={Image} />
+      {/* </Image> */}
       <TextWrapper>
         <Title>{cardData.title}</Title>
         <Text
@@ -84,17 +88,26 @@ const Wrapper = styled.div`
   }
 `;
 
-const Image = styled.img`
-  max-height: 260px;
-  width: 100%;
-  /* height: 24vh; */
-  object-fit: cover;
-  border-radius: ${(props) => (props.type === 'whatChoose' ? '0px' : '25px')};
+// Commented due to use of GatsbyImage that cannot be wrapped into Styled Component
+// const Image = styled.div`
+//   max-height: 260px;
+//   width: 100%;
+//   /* height: 24vh; */
+//   object-fit: cover;
+//   border-radius: ${(props) => (props.type === 'whatChoose' ? '0px' : '25px')};
 
-  /* ${Wrapper} {
-    border-radius: ${(props) => (props.type === 'long' ? 'none' : '25px')};
-  } */
-`;
+//   /* ${Wrapper} {
+//     border-radius: ${(props) => (props.type === 'long' ? 'none' : '25px')};
+//   } */
+// `;
+
+const Image = {
+  maxHeight: '260px',
+  width: '100%',
+  /* height: 24vh; */
+  objectFit: 'cover',
+  borderRadius: '25px',
+};
 
 const TextWrapper = styled.div`
   display: flex;
@@ -104,6 +117,10 @@ const TextWrapper = styled.div`
 
 const Title = styled(bodyIntro)`
   font-weight: 700;
+  font-size: 2vw; // 32px
+  line-height: 120%;
+  font-weight: 700;
+  margin-bottom: -16px;
 `;
 
 const Text = styled(bodyText)`
@@ -113,13 +130,6 @@ const Text = styled(bodyText)`
 
   p {
     margin-top: 0.69vw;
-  }
-
-  h4 {
-    font-size: 2vw; // 32px
-    line-height: 120%;
-    font-weight: 700;
-    margin: 32px 0 16px 0;
   }
 
   ul {
