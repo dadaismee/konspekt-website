@@ -40,9 +40,7 @@ const ContentCard = ({ color, cardData }) => {
   const img = getImage(cardData.image);
   return (
     <Wrapper type={cardData.type} subtype={cardData.subtype} color={color}>
-      {/* <Image type={cardData.type}> */}
       <GatsbyImage image={img} alt={cardData.title} style={Image} />
-      {/* </Image> */}
       <TextWrapper>
         <Title>{cardData.title}</Title>
         <Text
@@ -51,7 +49,7 @@ const ContentCard = ({ color, cardData }) => {
           }}
         />
       </TextWrapper>
-      <ButtonWrapper>
+      {/* <ButtonWrapper>
         {cardData.price && <Price>{cardData.price}</Price>}
         <Link to={cardData.link}>
           <Button
@@ -60,7 +58,7 @@ const ContentCard = ({ color, cardData }) => {
             text={cardData.buttonText}
           />
         </Link>
-      </ButtonWrapper>
+      </ButtonWrapper> */}
     </Wrapper>
   );
 };
@@ -74,9 +72,11 @@ const Wrapper = styled.div`
       : subtype === 'long'
       ? cardType.product.long
       : cardType.product.normal};
+  width: 100%;
   gap: 3.77vh; //40px;
   padding: 2.77vw; //40px
-  width: 100%;
+  max-height: 97%;
+  margin: auto;
 
   box-shadow: 5px 20px 40px rgba(0, 0, 0, 0.25);
   background-color: ${({ color }) => color};
@@ -102,9 +102,8 @@ const Wrapper = styled.div`
 // `;
 
 const Image = {
-  maxHeight: '260px',
+  // maxHeight: '260px',
   width: '100%',
-  /* height: 24vh; */
   objectFit: 'cover',
   borderRadius: '25px',
 };
@@ -128,6 +127,19 @@ const Text = styled(bodyText)`
   font-size: 1.38vw; //20px;
   line-height: 150%;
 
+  * {
+    font-size: 1.38vw; //20px;
+    line-height: 145%;
+
+    @media (max-width: ${mediaQueries.tablet}) {
+      font-size: 20px;
+    }
+    @media (max-width: ${mediaQueries.phone}) {
+      font-size: 16px;
+      line-height: 130%;
+    }
+  }
+
   p {
     margin-top: 0.69vw;
   }
@@ -136,6 +148,16 @@ const Text = styled(bodyText)`
     list-style-type: disc;
     margin: 0.69vw 1.5vw 0vh 1.5vw;
   }
+
+  ol {
+    list-style-type: number;
+    margin: 0.69vw 1.5vw 0vh 1.5vw;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
   @media (max-width: ${mediaQueries.tablet}) {
     width: auto;
     grid-column-start: 1;
@@ -144,9 +166,8 @@ const Text = styled(bodyText)`
 `;
 
 const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  place-items: end end;
 `;
 
 const Price = styled(bodyText)`
