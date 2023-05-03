@@ -8,21 +8,21 @@ import {
   ContentCard,
   CenterHeading,
   SignUpModal,
-  Button,
 } from '../components/components_index';
 import { colors } from '../styles/ColorStyles';
 import { mediaQueries } from '../styles/GlobalStyles';
 import * as pageData from '../data/indexPageData';
+import { StaticImage } from 'gatsby-plugin-image';
 
 const Index = ({ data }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const handleClick = () => {
+    setModalIsOpen(true);
+  };
 
   return (
     <Layout>
-      <Hero
-        taglineText={pageData.taglineText}
-        handleClick={() => setModalIsOpen(true)}
-      />
+      <Hero taglineText={pageData.taglineText} handleClick={handleClick} />
       {modalIsOpen && <SignUpModal closeModal={() => setModalIsOpen(false)} />}
       <CenterHeading headingText={pageData.heading} color={colors.yellow80} />
       <TextSection
@@ -37,22 +37,15 @@ const Index = ({ data }) => {
             cardData={card}
             key={index}
             color={colors[`${card.color}`]}
+            handleClick={handleClick}
             // buttonText={card.buttonText}
           />
         ))}
       </CardGrid>
       <CenterHeading headingText={pageData.whatWrong} color={colors.pink80} />
       <TextSection mainText={data.allContentfulMainText.nodes[1]} image='' />
-      <ExplainImage src='/images//pictures/explanation.png' alt='explanation' />
-      {/* Add a screen-wide sig-up button */}
-      {/* <Button
-        bgColor={colors.green}
-        txtColor={colors.textBlack}
-        handleClick={() => setModalIsOpen(true)}
-        type='normal'
-        text='Sign Up'
-      /> */}
-      ***
+      <StaticImage src='../../static/images//pictures/explanation.png' />
+
       {/* <CenterHeading
         headingText={pageData.chooseHeading}
         color={colors.green80}
@@ -76,16 +69,15 @@ const CardGrid = styled.div`
   display: grid;
   grid-template-columns: ${({ type }) =>
     type === 'product'
-      ? 'repeat(2, auto); column-gap: 12vh'
-      : 'repeat(3, auto); gap: 5vh'};
-  row-gap: 5.55vh; //60px;
+      ? 'repeat(2, 39.7vw); column-gap: 12vh'
+      : 'repeat(3, 39.7vw); gap: 5vh'};
+  /* row-gap: 5.55vh; //60px; */
   padding: var(--section-padding);
-  justify-content: space-around;
 
   @media (max-width: ${mediaQueries.tablet}) {
     display: flex;
     flex-direction: column;
-    row-gap: 3vh;
+    /* row-gap: 3vh; */
   }
 `;
 

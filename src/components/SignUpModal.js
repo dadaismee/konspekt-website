@@ -4,11 +4,12 @@ import { useForm } from 'react-hook-form';
 import Confetti from 'react-confetti';
 
 import { colors } from '../styles/ColorStyles';
-import { mainShadow } from '../styles/GlobalStyles';
+import { mainShadow, mediaQueries } from '../styles/GlobalStyles';
 import { heading2, smallText } from '../styles/TextStyles';
 import { opacityAnimation } from './Animations';
 import Button from './Button';
 import { RiCloseLine } from 'react-icons/ri';
+import { StaticImage } from 'gatsby-plugin-image';
 
 const SignUpModal = ({ closeModal }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -39,7 +40,7 @@ const SignUpModal = ({ closeModal }) => {
     <>
       {isSubmitted && <Confetti />}
       <Wrapper>
-        <Image src='/images/graphics/modalPattern.svg' alt='pattern' />
+        <StaticImage src='../../static/images/graphics/modalPattern.svg' />
         {isSubmitted === false ? (
           <Main>
             <Text>
@@ -114,11 +115,12 @@ const Wrapper = styled.section`
   place-items: center;
   place-self: center;
 
-  position: absolute;
+  position: fixed;
   top: 15%;
   left: 15vw;
   max-width: 1008px;
   max-height: 544px;
+  overflow-y: hidden;
 
   background: ${colors.yellow60};
   box-shadow: ${mainShadow};
@@ -126,6 +128,9 @@ const Wrapper = styled.section`
   z-index: 2;
 
   animation: ${opacityAnimation};
+
+  @media screen and (max-width: ${mediaQueries.phone}) {
+  }
 `;
 
 const Image = styled.img``;

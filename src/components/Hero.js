@@ -1,14 +1,14 @@
-import React from "react";
-import styled from "styled-components";
-import { heading1, heading4 } from "../styles/TextStyles";
-import { colors } from "../styles/ColorStyles";
+import React from 'react';
+import styled from 'styled-components';
+import { heading1, heading4 } from '../styles/TextStyles';
+import { colors } from '../styles/ColorStyles';
 import {
   cssForRombAnimation,
   mainShadow,
   mediaQueries,
-} from "../styles/GlobalStyles";
-import { opacityAnimation, RombOpacityAnimation, RombCSS } from "./Animations";
-import { PatternImage } from "./components_index";
+} from '../styles/GlobalStyles';
+import { opacityAnimation, RombOpacityAnimation, RombCSS } from './Animations';
+import { PatternImage } from './components_index';
 
 const Hero = ({ taglineText, handleClick }) => {
   return (
@@ -43,7 +43,7 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(2, auto);
   padding: 15vh 4vw; // 167px 128px // 15vh 4vw
-  background-color: ${colors.green60};
+  background-color: ${colors.green80};
 
   @media (max-width: ${mediaQueries.tablet}) {
     grid-template-columns: 1fr;
@@ -64,8 +64,8 @@ const TaglineWrapper = styled.div`
   justify-self: center;
   background-image: linear-gradient(
     to right,
-    ${colors.yellow100} 100%,
-    ${colors.yellow40} 100%
+    ${colors.yellow80} 100%,
+    ${colors.yellow80} 100%
   );
   background-repeat: no-repeat;
   width: 48vw;
@@ -120,7 +120,7 @@ const Subtext = styled(heading4)`
   animation-delay: 1.5s;
 
   span {
-    ${cssForRombAnimation(colors.yellow100)};
+    ${cssForRombAnimation(colors.yellow80)};
     animation: ${RombCSS};
     animation-delay: 1.95s;
   }

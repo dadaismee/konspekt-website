@@ -45,7 +45,7 @@ const Wrapper = styled.button`
 
   :hover {
     /* color: ${colors.textBlack}; */
-    transform: translateY(-5px);
+    transform: translateY(-2.5px);
     box-shadow: ${mainShadow};
     cursor: ${({ allowed }) => (allowed ? 'pointer' : 'not-allowed')};
   }

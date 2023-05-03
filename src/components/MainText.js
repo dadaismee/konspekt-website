@@ -7,7 +7,7 @@ const MainText = ({ image, tagline, text }) => {
   return (
     <Wrapper image={image} tagline={tagline}>
       {image && <Image src={image} />}
-      {tagline && <Tagline>{tagline}</Tagline>}
+      {tagline && <Tagline></Tagline>}
       <Text tagline={tagline} dangerouslySetInnerHTML={{ __html: text }} />
     </Wrapper>
   );
@@ -20,12 +20,11 @@ const Wrapper = styled.div`
   grid-template-columns: ${({ image, tagline }) =>
     Boolean(image) && Boolean(tagline)
       ? 'repeat(3, 1fr)'
-      : Boolean(tagline)
-      ? 'repeat(3, 1fr)'
+      : Boolean(image)
+      ? 'repeat(2, 39.7vw)'
       : '60vw'};
   justify-content: center;
-  place-items: start center;
-  gap: 25px; //25px
+  gap: 12vh;
 
   @media (max-width: ${mediaQueries.tablet}) {
     grid-template-columns: repeat(2, 1fr);
@@ -33,14 +32,9 @@ const Wrapper = styled.div`
   }
 `;
 
-const ImageWrapper = styled.div`
-  display: grid;
-  grid-template-rows: auto auto;
-  gap: 16px;
-  place-content: start center;
-`;
-
 const Image = styled.img`
+  width: 100%;
+
   @media (max-width: ${mediaQueries.tablet}) {
     width: 42vw;
   }

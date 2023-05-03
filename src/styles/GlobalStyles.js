@@ -12,4 +12,4 @@ export const cssForRombAnimation = (color) => ({
   backgroundRepeat: 'no-repeat',
 });
 
-export const mainShadow = '5px 20px 40px rgba(0, 0, 0, 0.25)';
+export const mainShadow = '10px 10px 20px rgba(0, 0, 0, 0.25)';

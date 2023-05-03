@@ -1,17 +1,17 @@
 export const menuItems = [
   {
-    title: "Home",
-    link: "/",
+    title: 'Home',
+    link: '/',
     soon: false,
   },
   {
-    title: "Course",
-    link: "/course",
+    title: 'Course',
+    link: '/course',
     soon: true,
   },
   {
-    title: "Toolchain",
-    link: "/toolchain",
+    title: 'Toolchain',
+    link: '/toolchain',
     soon: true,
   },
   // {
@@ -24,9 +24,9 @@ export const menuItems = [
   //   link: "/blog",
   //   soon: false,
   // },
-  {
-    title: "About",
-    link: "/about",
-    soon: false,
-  },
+  // {
+  //   title: "About",
+  //   link: "/about",
+  //   soon: false,
+  // },
 ];

@@ -21,7 +21,7 @@ const cardType = {
       display: 'flex',
       flexDirection: 'column',
       width: '39.7vw', //573px
-      // height: "64vh", //696px
+      height: '696px', //696px
     },
   },
   whatChoose: {
@@ -31,12 +31,12 @@ const cardType = {
     alignItems: 'center',
     padding: '0px 40px',
     gap: '40px',
-    maxWidth: '382px',
+    // maxWidth: '382px',
     height: '602px',
   },
 };
 
-const ContentCard = ({ color, cardData }) => {
+const ContentCard = ({ color, cardData, handleClick }) => {
   const img = getImage(cardData.image);
   return (
     <Wrapper type={cardData.type} subtype={cardData.subtype} color={color}>
@@ -49,16 +49,18 @@ const ContentCard = ({ color, cardData }) => {
           }}
         />
       </TextWrapper>
-      {/* <ButtonWrapper>
+      <ButtonWrapper>
         {cardData.price && <Price>{cardData.price}</Price>}
-        <Link to={cardData.link}>
-          <Button
-            bgColor={cardData.buttonColor}
-            txtColor={cardData.buttonTextColor}
-            text={cardData.buttonText}
-          />
-        </Link>
-      </ButtonWrapper> */}
+        {/* <Link to={cardData.link}> */}
+        <Button
+          bgColor={cardData.buttonColor}
+          txtColor={cardData.buttonTextColor}
+          text={cardData.buttonText}
+          handleClick={handleClick}
+          allowed={true}
+        />
+        {/* </Link> */}
+      </ButtonWrapper>
     </Wrapper>
   );
 };
@@ -75,8 +77,7 @@ const Wrapper = styled.div`
   width: 100%;
   gap: 3.77vh; //40px;
   padding: 2.77vw; //40px
-  max-height: 97%;
-  margin: auto;
+  margin-bottom: auto;
 
   box-shadow: 5px 20px 40px rgba(0, 0, 0, 0.25);
   background-color: ${({ color }) => color};
@@ -126,6 +127,7 @@ const Text = styled(bodyText)`
   font-weight: 500;
   font-size: 1.38vw; //20px;
   line-height: 150%;
+  margin-bottom: auto;
 
   * {
     font-size: 1.38vw; //20px;
@@ -168,6 +170,7 @@ const Text = styled(bodyText)`
 const ButtonWrapper = styled.div`
   display: grid;
   place-items: end end;
+  margin-top: auto;
 `;
 
 const Price = styled(bodyText)`
