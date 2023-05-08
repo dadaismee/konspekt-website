@@ -93,14 +93,15 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(4, min-content);
   padding: var(--section-padding);
-  margin: var(--section-padding);
+  margin-top: 1.38vw;
   margin-bottom: -0.69vw;
   place-content: center;
 
   @media (max-width: ${mediaQueries.phone}) {
     display: flex;
     flex-direction: column;
-    align-items: ${({ align }) => (align === 'center' ? 'center' : 'start')};
+    /* align-items: ${({ align }) =>
+      align === 'center' ? 'center' : 'start'}; */
   }
 `;
 

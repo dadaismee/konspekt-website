@@ -10,17 +10,17 @@ export const heading = {
     isAnimated: false,
   },
   second: {
-    title: 'is a project about',
+    title: 'is a',
     isBold: false,
     isAnimated: false,
   },
   third: {
-    title: 'sustainable',
+    title: 'sustainable writing',
     isBold: true,
     isAnimated: true,
   },
   fourth: {
-    title: 'research writing',
+    title: 'project',
     isBold: false,
     isAnimated: false,
   },
@@ -118,7 +118,7 @@ export const whatWrong = {
   first: {
     title: 'What is wrong',
     isBold: true,
-    isAnimated: false,
+    isAnimated: true,
   },
   second: {
     title: 'with',
@@ -131,9 +131,9 @@ export const whatWrong = {
     isAnimated: false,
   },
   fourth: {
-    title: 'writing procedure?',
+    title: 'writing methods',
     isBold: false,
-    isAnimated: true,
+    isAnimated: false,
   },
 };
 

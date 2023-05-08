@@ -4,9 +4,9 @@ export const mediaQueries = {
 };
 
 export const cssForRombAnimation = (color) => ({
+  transform: 'skewX(160deg)',
   padding: '0.25vw',
   margin: '-0.25vw',
-  transform: 'skewX(160deg)',
   backgroundImage: `linear-gradient(to right, ${color}, ${color})`,
   backgroundSize: '0%',
   backgroundRepeat: 'no-repeat',

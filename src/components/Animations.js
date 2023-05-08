@@ -1,5 +1,5 @@
-import styled, { css, keyframes } from "styled-components";
-import { colors } from "../styles/ColorStyles";
+import styled, { css, keyframes } from 'styled-components';
+import { colors } from '../styles/ColorStyles';
 
 export const RombHover = styled.div`
   padding: 0 0.25vw;

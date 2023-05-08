@@ -22,12 +22,16 @@ const Index = ({ data }) => {
 
   return (
     <Layout>
-      <Hero taglineText={pageData.taglineText} handleClick={handleClick} />
-      {modalIsOpen && <SignUpModal closeModal={() => setModalIsOpen(false)} />}
-      <CenterHeading headingText={pageData.heading} color={colors.yellow80} />
+      <FirstScreen>
+        <Hero taglineText={pageData.taglineText} handleClick={handleClick} />
+        {modalIsOpen && (
+          <SignUpModal closeModal={() => setModalIsOpen(false)} />
+        )}
+      </FirstScreen>
+      <CenterHeading headingText={pageData.heading} color={colors.green80} />
       <TextSection
         mainText={data.allContentfulMainText.nodes[0]}
-        image='images/graphics/pattern_typography.svg'
+        image='images/graphics/stack_green_card.svg'
       />
       <CardGrid type='product'>
         {data.allContentfulContentCard.nodes.map((card, index) => (
@@ -64,6 +68,10 @@ const Index = ({ data }) => {
     </Layout>
   );
 };
+
+const FirstScreen = styled.div`
+  height: 100dvh;
+`;
 
 const CardGrid = styled.div`
   display: grid;

@@ -7,7 +7,12 @@ import {
   mainShadow,
   mediaQueries,
 } from '../styles/GlobalStyles';
-import { opacityAnimation, RombOpacityAnimation, RombCSS } from './Animations';
+import {
+  opacityAnimation,
+  RombOpacityAnimation,
+  RombCSS,
+  PulseRomb,
+} from './Animations';
 import { PatternImage } from './components_index';
 
 const Hero = ({ taglineText, handleClick }) => {
@@ -22,9 +27,9 @@ const Hero = ({ taglineText, handleClick }) => {
         </TaglineWrapper>
         <TextWrapper>
           <Subtext>
-            Learn the <span>workflow</span> <br />
+            Learn <span>workflows</span> <br />
             and use <span>toolchains</span> <br />
-            that do the job <br />
+            for better writing <br />
           </Subtext>
           <Button onClick={handleClick}>
             Sign up
@@ -42,7 +47,7 @@ export default Hero;
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(2, auto);
-  padding: 15vh 4vw; // 167px 128px // 15vh 4vw
+  padding: 20vh 4vw; // 167px 128px // 15vh 4vw
   background-color: ${colors.green80};
 
   @media (max-width: ${mediaQueries.tablet}) {
@@ -54,6 +59,7 @@ const Wrapper = styled.div`
   @media (max-width: ${mediaQueries.phone}) {
     padding: 16vw 4vw 8vw; // 167px 128px // 15vh 4vw
     place-content: center;
+    height: 100dvh;
   }
 `;
 
@@ -72,7 +78,7 @@ const TaglineWrapper = styled.div`
   height: 18vw;
 
   transform: skewX(160deg);
-  animation: ${RombOpacityAnimation};
+  animation: ${RombOpacityAnimation} ${PulseRomb};
   opacity: 0;
   animation-delay: 0.25s;
 
@@ -115,24 +121,25 @@ const TextWrapper = styled.div`
 `;
 
 const Subtext = styled(heading4)`
+  width: 100%;
   opacity: 0;
   animation: ${opacityAnimation};
   animation-delay: 1.5s;
 
   span {
-    ${cssForRombAnimation(colors.yellow80)};
+    /* ${cssForRombAnimation(colors.yellow80)};
     animation: ${RombCSS};
-    animation-delay: 1.95s;
+    animation-delay: 1.95s; */
+    font-weight: 400;
+    font-style: italic;
   }
 
   @media (max-width: ${mediaQueries.tablet}) {
     line-height: 120%;
-    span {
-      color: ${colors.textWhite};
-    }
   }
   @media (max-width: ${mediaQueries.phone}) {
     font-size: 24px;
+    width: 75vw;
   }
 `;
 
@@ -165,11 +172,12 @@ const Button = styled.button`
 
   @media (max-width: ${mediaQueries.tablet}) {
     font-size: 2.8vw;
-    width: auto;
+    width: 100%;
     padding: 20px;
   }
 
   @media (max-width: ${mediaQueries.phone}) {
+    width: 75vw;
     font-size: 5vw;
   }
 `;

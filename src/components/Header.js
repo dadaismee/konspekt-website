@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
-import styled from "styled-components";
-import { Link } from "gatsby";
-import { Logo, Menu } from "./components_index";
-import { mediaQueries } from "../styles/GlobalStyles";
+import React, { useState, useEffect, useRef } from 'react';
+import styled from 'styled-components';
+import { Link } from 'gatsby';
+import { Logo, Menu } from './components_index';
+import { mediaQueries } from '../styles/GlobalStyles';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,21 +18,21 @@ const Header = () => {
   }
 
   useEffect(() => {
-    document.addEventListener("scroll", handleClickOutside);
+    document.addEventListener('scroll', handleClickOutside);
 
     return () => {
-      document.removeEventListener("scroll", handleClickOutside);
+      document.removeEventListener('scroll', handleClickOutside);
     };
   }, []);
 
   return (
     <Wrapper>
-      <Link to="/" alt="logo">
+      <Link to='/' alt='logo'>
         <Logo />
       </Link>
       <Menu
-        menuStyles="normal"
-        buttonStyles="normal"
+        menuStyles='normal'
+        buttonStyles='normal'
         isOpen={isOpen}
         handleClick={handleClick}
       />
@@ -45,12 +45,16 @@ export default Header;
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: auto auto;
-  gap: ${({ isOpen }) => (isOpen ? "0px" : "36vw")}; // 530px
+  gap: ${({ isOpen }) => (isOpen ? '0px' : '36vw')}; // 530px
   padding: var(--section-padding);
   z-index: 1;
 
   @media (max-width: ${mediaQueries.tablet}) {
     padding: var(--section-padding);
     justify-content: space-between;
+  }
+
+  @media (max-width: ${mediaQueries.phone}) {
+    position: absolute;
   }
 `;

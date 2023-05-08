@@ -2,12 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import { mediaQueries } from '../styles/GlobalStyles';
 import { bodyIntro, heading3 } from '../styles/TextStyles';
+import { colors } from '../styles/ColorStyles';
 
 const MainText = ({ image, tagline, text }) => {
   return (
     <Wrapper image={image} tagline={tagline}>
       {image && <Image src={image} />}
-      {tagline && <Tagline></Tagline>}
+      {/* {tagline && <Tagline></Tagline>} */}
       <Text tagline={tagline} dangerouslySetInnerHTML={{ __html: text }} />
     </Wrapper>
   );
@@ -17,12 +18,8 @@ export default MainText;
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: ${({ image, tagline }) =>
-    Boolean(image) && Boolean(tagline)
-      ? 'repeat(3, 1fr)'
-      : Boolean(image)
-      ? 'repeat(2, 39.7vw)'
-      : '60vw'};
+  grid-template-columns: ${({ image }) =>
+    Boolean(image) ? 'repeat(2, 1fr)' : '60vw'};
   justify-content: center;
   gap: 12vh;
 
@@ -33,7 +30,9 @@ const Wrapper = styled.div`
 `;
 
 const Image = styled.img`
-  width: 100%;
+  display: grid;
+  place-self: center;
+  width: 75%;
 
   @media (max-width: ${mediaQueries.tablet}) {
     width: 42vw;
@@ -45,12 +44,21 @@ const Tagline = styled(heading3)``;
 const Text = styled(bodyIntro)`
   ${({ tagline }) =>
     Boolean(tagline) ? 'max-width: 578.72px; width: 50vw;' : 'max-width: auto'}
-  font-weight: 500;
-  font-size: 1.38vw; //20px;
-  line-height: 150%;
 
   p {
     margin-top: 0.69vw;
+    font-weight: 500;
+    font-size: 1.6vw; //23.4615px;
+    line-height: 145%;
+    color: ${colors.textBlack};
+
+    @media (max-width: ${mediaQueries.tablet}) {
+      font-size: 20px;
+    }
+
+    @media (max-width: ${mediaQueries.phone}) {
+      font-size: 18px;
+    }
   }
 
   h4 {
@@ -58,6 +66,11 @@ const Text = styled(bodyIntro)`
     line-height: 120%;
     font-weight: 700;
     margin: 32px 0 16px 0;
+
+    @media (max-width: ${mediaQueries.tablet}) {
+      font-size: 4vw;
+      line-height: 145%;
+    }
   }
 
   ul {
