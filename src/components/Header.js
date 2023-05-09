@@ -43,6 +43,7 @@ const Header = () => {
 export default Header;
 
 const Wrapper = styled.div`
+  /* position: sticky; */
   display: grid;
   grid-template-columns: auto auto;
   gap: ${({ isOpen }) => (isOpen ? '0px' : '36vw')}; // 530px

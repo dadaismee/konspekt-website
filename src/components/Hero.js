@@ -17,7 +17,7 @@ import { PatternImage } from './components_index';
 
 const Hero = ({ taglineText, handleClick }) => {
   return (
-    <>
+    <MegaWrapper>
       <Wrapper>
         <TaglineWrapper>
           <Tagline>
@@ -38,11 +38,13 @@ const Hero = ({ taglineText, handleClick }) => {
         </TextWrapper>
       </Wrapper>
       <PatternImage />
-    </>
+    </MegaWrapper>
   );
 };
 
 export default Hero;
+
+const MegaWrapper = styled.div``;
 
 const Wrapper = styled.div`
   display: grid;

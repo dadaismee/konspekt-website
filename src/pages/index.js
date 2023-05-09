@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReactPageScroll from 'react-page-scroll';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import {
@@ -13,6 +14,7 @@ import { colors } from '../styles/ColorStyles';
 import { mediaQueries } from '../styles/GlobalStyles';
 import * as pageData from '../data/indexPageData';
 import { StaticImage } from 'gatsby-plugin-image';
+import PageScroll from 'react-page-scroll';
 
 const Index = ({ data }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -22,17 +24,16 @@ const Index = ({ data }) => {
 
   return (
     <Layout>
-      <FirstScreen>
-        <Hero taglineText={pageData.taglineText} handleClick={handleClick} />
-        {modalIsOpen && (
-          <SignUpModal closeModal={() => setModalIsOpen(false)} />
-        )}
-      </FirstScreen>
-      <CenterHeading headingText={pageData.heading} color={colors.green80} />
-      <TextSection
-        mainText={data.allContentfulMainText.nodes[0]}
-        image='images/graphics/stack_green_card.svg'
-      />
+      <Hero taglineText={pageData.taglineText} handleClick={handleClick} />
+      {modalIsOpen && <SignUpModal closeModal={() => setModalIsOpen(false)} />}
+
+      <SecondScreen>
+        <CenterHeading headingText={pageData.heading} color={colors.green80} />
+        <TextSection
+          mainText={data.allContentfulMainText.nodes[0]}
+          image='images/graphics/stack_green_card.svg'
+        />
+      </SecondScreen>
       <CardGrid type='product'>
         {data.allContentfulContentCard.nodes.map((card, index) => (
           <ContentCard
@@ -46,8 +47,10 @@ const Index = ({ data }) => {
           />
         ))}
       </CardGrid>
-      <CenterHeading headingText={pageData.whatWrong} color={colors.pink80} />
-      <TextSection mainText={data.allContentfulMainText.nodes[1]} image='' />
+      <FourthScreen>
+        <CenterHeading headingText={pageData.whatWrong} color={colors.pink80} />
+        <TextSection mainText={data.allContentfulMainText.nodes[1]} image='' />
+      </FourthScreen>
       <StaticImage src='../../static/images//pictures/explanation.png' />
 
       {/* <CenterHeading
@@ -69,8 +72,8 @@ const Index = ({ data }) => {
   );
 };
 
-const FirstScreen = styled.div`
-  height: 100dvh;
+const SecondScreen = styled.div`
+  margin: 6vh 0 12vh 0;
 `;
 
 const CardGrid = styled.div`
@@ -79,8 +82,9 @@ const CardGrid = styled.div`
     type === 'product'
       ? 'repeat(2, 39.7vw); column-gap: 12vh'
       : 'repeat(3, 39.7vw); gap: 5vh'};
-  /* row-gap: 5.55vh; //60px; */
+  row-gap: 5.55vh; //60px;
   padding: var(--section-padding);
+  margin: 12vh 0;
 
   @media (max-width: ${mediaQueries.tablet}) {
     display: flex;
@@ -89,9 +93,8 @@ const CardGrid = styled.div`
   }
 `;
 
-const ExplainImage = styled.img`
-  width: 100%;
-  /* padding: var(--section-padding); */
+const FourthScreen = styled.div`
+  margin-bottom: 12vh;
 `;
 
 export default Index;

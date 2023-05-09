@@ -19,7 +19,7 @@ export default MainText;
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: ${({ image }) =>
-    Boolean(image) ? 'repeat(2, 1fr)' : '60vw'};
+    Boolean(image) ? 'repeat(2, 39.7vw)' : '60vw'};
   justify-content: center;
   gap: 12vh;
 
