@@ -38,6 +38,7 @@
     "react-icons": "^4.8.0",
     "react-markdown": "^8.0.6",
     "react-page-scroll": "^1.0.6",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "swiper": "^9.3.1"
   }
 }

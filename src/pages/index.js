@@ -14,7 +14,7 @@ import { colors } from '../styles/ColorStyles';
 import { mediaQueries } from '../styles/GlobalStyles';
 import * as pageData from '../data/indexPageData';
 import { StaticImage } from 'gatsby-plugin-image';
-import PageScroll from 'react-page-scroll';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 const Index = ({ data }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -24,36 +24,66 @@ const Index = ({ data }) => {
 
   return (
     <Layout>
-      <Hero taglineText={pageData.taglineText} handleClick={handleClick} />
-      {modalIsOpen && <SignUpModal closeModal={() => setModalIsOpen(false)} />}
+      <Wrapper>
+        <Hero taglineText={pageData.taglineText} handleClick={handleClick} />
+        {modalIsOpen && (
+          <SignUpModal closeModal={() => setModalIsOpen(false)} />
+        )}
 
-      <SecondScreen>
-        <CenterHeading headingText={pageData.heading} color={colors.green80} />
-        <TextSection
-          mainText={data.allContentfulMainText.nodes[0]}
-          image='images/graphics/stack_green_card.svg'
-        />
-      </SecondScreen>
-      <CardGrid type='product'>
-        {data.allContentfulContentCard.nodes.map((card, index) => (
-          <ContentCard
-            type='product'
-            subtype={card.subtype}
-            cardData={card}
-            key={index}
-            color={colors[`${card.color}`]}
-            handleClick={handleClick}
-            // buttonText={card.buttonText}
+        <SecondScreen>
+          <CenterHeading
+            headingText={pageData.heading}
+            color={colors.green80}
           />
-        ))}
-      </CardGrid>
-      <FourthScreen>
-        <CenterHeading headingText={pageData.whatWrong} color={colors.pink80} />
-        <TextSection mainText={data.allContentfulMainText.nodes[1]} image='' />
-      </FourthScreen>
-      <StaticImage src='../../static/images//pictures/explanation.png' />
+          <TextSection
+            mainText={data.allContentfulMainText.nodes[0]}
+            image='images/graphics/stack_green_card.svg'
+          />
+        </SecondScreen>
+        <CardGrid type='product'>
+          {data.allContentfulContentCard.nodes.map((card, index) => (
+            <ContentCard
+              type='product'
+              subtype={card.subtype}
+              cardData={card}
+              key={index}
+              color={colors[`${card.color}`]}
+              handleClick={handleClick}
+              // buttonText={card.buttonText}
+            />
+          ))}
+        </CardGrid>
+        <FourthScreen>
+          <CenterHeading
+            headingText={pageData.whatWrong}
+            color={colors.pink80}
+          />
+          <TextSection
+            mainText={data.allContentfulMainText.nodes[1]}
+            image=''
+          />
+        </FourthScreen>
 
-      {/* <CenterHeading
+        <div id='swiper'>
+          <Swiper
+            spaceBetween={0}
+            slidesPerView={1}
+            onSlideChange={() => console.log('slide change')}
+            onSwiper={(swiper) => console.log(swiper)}
+          >
+            <SwiperSlide>
+              <StaticImage src='../../static/images/pictures/ordinary-way.png' />
+            </SwiperSlide>
+            <SwiperSlide>
+              <StaticImage src='../../static/images/pictures/konspekt-way.png' />
+            </SwiperSlide>
+          </Swiper>
+        </div>
+        <div id='image'>
+          <StaticImage src='../../static/images//pictures/explanation.png' />
+        </div>
+
+        {/* <CenterHeading
         headingText={pageData.chooseHeading}
         color={colors.green80}
         align="center"
@@ -68,12 +98,29 @@ const Index = ({ data }) => {
           />
         ))}
       </CardGrid> */}
+      </Wrapper>
     </Layout>
   );
 };
 
+const Wrapper = styled.div`
+  #swiper {
+    display: none;
+
+    @media screen and (max-width: ${mediaQueries.phone}) {
+      display: block;
+    }
+  }
+
+  #image {
+    @media screen and (max-width: ${mediaQueries.phone}) {
+      display: none;
+    }
+  }
+`;
+
 const SecondScreen = styled.div`
-  margin: 6vh 0 12vh 0;
+  /* margin: 6vh 0 12vh 0; */
 `;
 
 const CardGrid = styled.div`
@@ -84,17 +131,17 @@ const CardGrid = styled.div`
       : 'repeat(3, 39.7vw); gap: 5vh'};
   row-gap: 5.55vh; //60px;
   padding: var(--section-padding);
-  margin: 12vh 0;
+  /* margin: 12vh 0; */
 
   @media (max-width: ${mediaQueries.tablet}) {
     display: flex;
     flex-direction: column;
-    /* row-gap: 3vh; */
+    row-gap: 3vh;
   }
 `;
 
 const FourthScreen = styled.div`
-  margin-bottom: 12vh;
+  margin-bottom: 6vh;
 `;
 
 export default Index;

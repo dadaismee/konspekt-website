@@ -40,7 +40,9 @@ const SignUpModal = ({ closeModal }) => {
     <>
       {isSubmitted && <Confetti />}
       <Wrapper>
-        <StaticImage src='../../static/images/graphics/modalPattern.svg' />
+        <div id='image'>
+          <StaticImage src='../../static/images/graphics/modalPattern.svg' />
+        </div>
         {isSubmitted === false ? (
           <Main>
             <Text>
@@ -129,11 +131,31 @@ const Wrapper = styled.section`
 
   animation: ${opacityAnimation};
 
+  @media screen and (max-width: ${mediaQueries.tablet}) {
+    display: grid;
+    grid-template-columns: repeat(2, 43.4vw);
+    top: 25vh;
+    left: 3vh;
+    right: 3vh;
+    #image {
+      /* width: 50%; */
+    }
+  }
+
   @media screen and (max-width: ${mediaQueries.phone}) {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    top: 20vh;
+    left: 3vh;
+    right: 3vh;
+
+    #image {
+      display: none;
+      /* height: 10px;
+      opacity: 0.5; */
+    }
   }
 `;
-
-const Image = styled.img``;
 
 const Main = styled.div`
   position: relative;
@@ -142,6 +164,12 @@ const Main = styled.div`
   max-height: 293px;
   /* background-color: red; */
   gap: 20px;
+
+  @media (max-width: ${mediaQueries.tablet}) {
+    max-width: 100%;
+    max-height: 100%;
+    padding: 7vw;
+  }
 `;
 
 const Text = styled.div`
@@ -187,6 +215,10 @@ const Description = styled(smallText)`
   span {
     font-weight: 700;
   }
+
+  @media screen and (max-width: ${mediaQueries.phone}) {
+    font-size: 16px;
+  }
 `;
 
 const Input = styled.input`
@@ -201,5 +233,10 @@ const Input = styled.input`
   ::placeholder {
     color: '#282828';
     opacity: 65%;
+  }
+
+  @media screen and (max-width: ${mediaQueries.tablet}) {
+    width: 100%;
+    font-size: 16px;
   }
 `;

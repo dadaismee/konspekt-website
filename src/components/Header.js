@@ -6,6 +6,8 @@ import { mediaQueries } from '../styles/GlobalStyles';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const ref = useRef();
+  const tooltipRef = useRef();
 
   function handleClick(e) {
     e.preventDefault();
@@ -13,15 +15,21 @@ const Header = () => {
   }
 
   function handleClickOutside(e) {
-    e.preventDefault();
-    if (window.scrollY > 20) setIsOpen(false);
+    if (
+      ref.current &&
+      ref.current.contains(e.target) &&
+      !tooltipRef.current.contains(e.target)
+    ) {
+      e.preventDefault();
+      setIsOpen(false);
+    }
   }
 
   useEffect(() => {
-    document.addEventListener('scroll', handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
 
     return () => {
-      document.removeEventListener('scroll', handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
@@ -35,6 +43,7 @@ const Header = () => {
         buttonStyles='normal'
         isOpen={isOpen}
         handleClick={handleClick}
+        ref={tooltipRef}
       />
     </Wrapper>
   );
@@ -47,6 +56,7 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns: auto auto;
   gap: ${({ isOpen }) => (isOpen ? '0px' : '36vw')}; // 530px
+  justify-content: space-between;
   padding: var(--section-padding);
   z-index: 1;
 
@@ -57,5 +67,7 @@ const Wrapper = styled.div`
 
   @media (max-width: ${mediaQueries.phone}) {
     position: absolute;
+    width: 100%;
+    justify-content: space-between;
   }
 `;

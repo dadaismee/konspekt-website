@@ -59,6 +59,9 @@ const Wrapper = styled.div`
   }
 
   @media (max-width: ${mediaQueries.phone}) {
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    gap: 12vh;
     padding: 16vw 4vw 8vw; // 167px 128px // 15vh 4vw
     place-content: center;
     height: 100dvh;
@@ -85,8 +88,8 @@ const TaglineWrapper = styled.div`
   animation-delay: 0.25s;
 
   @media (max-width: ${mediaQueries.tablet}) {
-    width: 75vw;
-    height: 30vw;
+    width: 77.5vw;
+    height: 32.5vw;
   }
 `;
 
@@ -127,6 +130,7 @@ const Subtext = styled(heading4)`
   opacity: 0;
   animation: ${opacityAnimation};
   animation-delay: 1.5s;
+  text-align: center;
 
   span {
     /* ${cssForRombAnimation(colors.yellow80)};

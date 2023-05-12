@@ -9,7 +9,7 @@ const PatternImage = () => {
     const handleScroll = () => {
       if (
         window.scrollY > imageHeight &&
-        window.scrollY < window.innerHeight / 3.5
+        window.scrollY < window.innerHeight / 2
       )
         setScrolled(window.scrollY);
     };

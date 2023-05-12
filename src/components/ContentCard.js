@@ -84,7 +84,8 @@ const Wrapper = styled.div`
   border-radius: 25px;
 
   @media (max-width: ${mediaQueries.tablet}) {
-    width: 100%;
+    width: auto;
+    height: auto;
     padding: 5.54vw;
   }
 `;
@@ -117,10 +118,14 @@ const TextWrapper = styled.div`
 
 const Title = styled(bodyIntro)`
   font-weight: 700;
-  font-size: 2vw; // 32px
+  font-size: 24px; // 32px
   line-height: 120%;
   font-weight: 700;
   margin-bottom: -16px;
+
+  @media screen and (max-width: ${mediaQueries.phone}) {
+    font-size: 20px;
+  }
 `;
 
 const Text = styled(bodyText)`
@@ -144,16 +149,37 @@ const Text = styled(bodyText)`
 
   p {
     margin-top: 0.69vw;
+    font-weight: 500;
+    font-size: 1.6vw; //23.4615px;
+    line-height: 145%;
+    color: ${colors.textBlack};
+
+    @media (max-width: ${mediaQueries.tablet}) {
+      font-size: 20px;
+    }
+
+    @media (max-width: ${mediaQueries.phone}) {
+      font-size: 16px;
+      margin-bottom: 4vw;
+    }
   }
 
   ul {
     list-style-type: disc;
     margin: 0.69vw 1.5vw 0vh 1.5vw;
+
+    @media screen and (max-width: ${mediaQueries.tablet}) {
+      margin: 0.69vw 4vw;
+    }
   }
 
   ol {
     list-style-type: number;
     margin: 0.69vw 1.5vw 0vh 1.5vw;
+
+    @media screen and (max-width: ${mediaQueries.tablet}) {
+      margin: 0.69vw 6vw;
+    }
   }
 
   strong {
