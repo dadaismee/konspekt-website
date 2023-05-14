@@ -15,6 +15,7 @@ import { mediaQueries } from '../styles/GlobalStyles';
 import * as pageData from '../data/indexPageData';
 import { StaticImage } from 'gatsby-plugin-image';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 
 const Index = ({ data }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -176,7 +177,7 @@ const CardGrid = styled.div`
 `;
 
 const FourthScreen = styled.div`
-  margin-bottom: 6vh;
+  /* margin-bottom: 3vh; */
 `;
 
 export default Index;
