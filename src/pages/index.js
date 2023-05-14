@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, Suspense } from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import {
@@ -14,15 +14,17 @@ import { colors } from '../styles/ColorStyles';
 import { mediaQueries } from '../styles/GlobalStyles';
 import * as pageData from '../data/indexPageData';
 import { StaticImage } from 'gatsby-plugin-image';
+import { Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import 'swiper/css/pagination';
 
 const Index = ({ data }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const ref = useRef();
 
   const handleClick = () => {
-    setModalIsOpen(true);
+    setModalIsOpen(!modalIsOpen);
   };
 
   // function handleClickOutside(e) {
@@ -40,14 +42,14 @@ const Index = ({ data }) => {
   //     document.removeEventListener('mousedown', handleClickOutside);
   //     document.removeEventListener('touchstart', handleClickOutside);
   //   };
-  // }, [ref]);
+  // }, []);
 
   return (
     <Layout>
       <Wrapper>
         <Hero taglineText={pageData.taglineText} handleClick={handleClick} />
         {modalIsOpen && (
-          <SignUpModal closeModal={() => setModalIsOpen(false)} />
+          <SignUpModal closeModal={() => setModalIsOpen(!modalIsOpen)} />
         )}
 
         <SecondScreen>
@@ -86,8 +88,10 @@ const Index = ({ data }) => {
 
         <div id='swiper'>
           <Swiper
+            modules={[Pagination]}
             spaceBetween={0}
             slidesPerView={1}
+            pagination={{ clickable: true }}
             onSlideChange={() => console.log('slide change')}
             onSwiper={(swiper) => console.log(swiper)}
           >

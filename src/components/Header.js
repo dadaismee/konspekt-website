@@ -13,22 +13,22 @@ const Header = () => {
     setIsOpen(!isOpen);
   }
 
-  function handleClickOutside(e) {
-    if (!ref.current || !ref.current.contains(e.target)) {
-      e.preventDefault();
-      setIsOpen(false);
-    }
-  }
+  // function handleClickOutside(e) {
+  //   if (!ref.current || !ref.current.contains(e.target)) {
+  //     e.preventDefault();
+  //     setIsOpen(false);
+  //   }
+  // }
 
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('touchstart', handleClickOutside);
+  // useEffect(() => {
+  //   document.addEventListener('mousedown', handleClickOutside);
+  //   document.addEventListener('touchstart', handleClickOutside);
 
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('touchstart', handleClickOutside);
-    };
-  }, [ref]);
+  //   return () => {
+  //     document.removeEventListener('mousedown', handleClickOutside);
+  //     document.removeEventListener('touchstart', handleClickOutside);
+  //   };
+  // }, [ref]);
 
   return (
     <Wrapper>

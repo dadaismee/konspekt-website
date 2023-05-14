@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, lazy } from 'react';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
-import Confetti from 'react-confetti';
-
+// import Confetti from 'react-confetti';
 import { colors } from '../styles/ColorStyles';
 import { mainShadow, mediaQueries } from '../styles/GlobalStyles';
 import { heading2, smallText } from '../styles/TextStyles';
@@ -10,6 +9,7 @@ import { opacityAnimation } from './Animations';
 import Button from './Button';
 import { RiCloseLine } from 'react-icons/ri';
 import { StaticImage } from 'gatsby-plugin-image';
+import Confetti from 'react-confetti';
 
 const SignUpModal = ({ closeModal }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -38,7 +38,15 @@ const SignUpModal = ({ closeModal }) => {
 
   return (
     <>
-      {isSubmitted && <Confetti />}
+      {isSubmitted && (
+        <Confetti
+          className='confetti'
+          width={window.innerWidth}
+          height={document.body.scrollHeight}
+          numberOfPieces={200}
+          colors={['#69BD7A', '#F97AA2', '#f1e363']}
+        />
+      )}
       <Wrapper>
         <div id='image'>
           <StaticImage src='../../static/images/graphics/modalPattern.svg' />
