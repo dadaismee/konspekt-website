@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import ReactPageScroll from 'react-page-scroll';
+import React, { useState, useEffect, useRef } from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import {
@@ -9,6 +8,7 @@ import {
   ContentCard,
   CenterHeading,
   SignUpModal,
+  Button,
 } from '../components/components_index';
 import { colors } from '../styles/ColorStyles';
 import { mediaQueries } from '../styles/GlobalStyles';
@@ -18,9 +18,28 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 const Index = ({ data }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const ref = useRef();
+
   const handleClick = () => {
     setModalIsOpen(true);
   };
+
+  // function handleClickOutside(e) {
+  //   if (!ref.current || ref.current.contains(e.target)) {
+  //     e.preventDefault();
+  //     setModalIsOpen(false);
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   document.addEventListener('mousedown', handleClickOutside);
+  //   document.addEventListener('touchstart', handleClickOutside);
+
+  //   return () => {
+  //     document.removeEventListener('mousedown', handleClickOutside);
+  //     document.removeEventListener('touchstart', handleClickOutside);
+  //   };
+  // }, [ref]);
 
   return (
     <Layout>
@@ -82,6 +101,17 @@ const Index = ({ data }) => {
         <div id='image'>
           <StaticImage src='../../static/images//pictures/explanation.png' />
         </div>
+        <div id='cta-button'>
+          <Button
+            bgColor='green100'
+            txtColor='textBlack'
+            text='Notify me'
+            handleClick={handleClick}
+            allowed={true}
+            width='50vw'
+            height='10vh'
+          />
+        </div>
 
         {/* <CenterHeading
         headingText={pageData.chooseHeading}
@@ -110,6 +140,11 @@ const Wrapper = styled.div`
     @media screen and (max-width: ${mediaQueries.phone}) {
       display: block;
     }
+  }
+
+  #cta-button {
+    margin: var(--section-padding);
+    text-align: center;
   }
 
   #image {

@@ -7,7 +7,6 @@ import { mediaQueries } from '../styles/GlobalStyles';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef();
-  const tooltipRef = useRef();
 
   function handleClick(e) {
     e.preventDefault();
@@ -15,11 +14,7 @@ const Header = () => {
   }
 
   function handleClickOutside(e) {
-    if (
-      ref.current &&
-      ref.current.contains(e.target) &&
-      !tooltipRef.current.contains(e.target)
-    ) {
+    if (!ref.current || !ref.current.contains(e.target)) {
       e.preventDefault();
       setIsOpen(false);
     }
@@ -27,11 +22,13 @@ const Header = () => {
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
     };
-  }, []);
+  }, [ref]);
 
   return (
     <Wrapper>
@@ -43,7 +40,7 @@ const Header = () => {
         buttonStyles='normal'
         isOpen={isOpen}
         handleClick={handleClick}
-        ref={tooltipRef}
+        ref={ref}
       />
     </Wrapper>
   );
@@ -52,7 +49,6 @@ const Header = () => {
 export default Header;
 
 const Wrapper = styled.div`
-  /* position: sticky; */
   display: grid;
   grid-template-columns: auto auto;
   gap: ${({ isOpen }) => (isOpen ? '0px' : '36vw')}; // 530px
@@ -66,6 +62,7 @@ const Wrapper = styled.div`
   }
 
   @media (max-width: ${mediaQueries.phone}) {
+    /* position: sticky; */
     position: absolute;
     width: 100%;
     justify-content: space-between;

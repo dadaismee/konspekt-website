@@ -18,13 +18,7 @@ const MenuWrapStyle = {
   },
 };
 
-const Menu = ({
-  menuStyles,
-  buttonStyles,
-  isOpen,
-  handleClick,
-  TooltipRef,
-}) => {
+const Menu = ({ menuStyles, buttonStyles, isOpen, handleClick, ref }) => {
   return (
     <MenuWrapper isOpen={isOpen} menuStyles={menuStyles}>
       {menuItems.map((item, index) => (
@@ -36,9 +30,9 @@ const Menu = ({
           key={index}
         />
       ))}
-      <TooltipWrapper>
-        <MenuTooltip isOpen={isOpen} handleClick={handleClick} />
-      </TooltipWrapper>
+      {/* <TooltipWrapper>
+        <MenuTooltip isOpen={isOpen} handleClick={handleClick} ref={ref} />
+      </TooltipWrapper> */}
     </MenuWrapper>
   );
 };

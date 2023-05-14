@@ -22,9 +22,9 @@ const styles = {
   },
 };
 
-const MenuTooltip = ({ isOpen, handleClick }) => {
+const MenuTooltip = ({ isOpen, handleClick, ref }) => {
   return (
-    <Wrapper isOpen={isOpen} onClick={handleClick}>
+    <Wrapper isOpen={isOpen} onClick={handleClick} ref={ref}>
       <img src='/images/graphics/menu.svg' />
       {menuItems.map((item, index) => (
         <MenuButton title={item.title} link={item.link} key={index} />

@@ -15,7 +15,16 @@ import { mediaQueries, mainShadow } from '../styles/GlobalStyles';
 //   },
 // };
 
-const Button = ({ bgColor, txtColor, text, type, handleClick, allowed }) => {
+const Button = ({
+  bgColor,
+  txtColor,
+  text,
+  type,
+  handleClick,
+  allowed,
+  width,
+  height,
+}) => {
   return (
     <Wrapper
       bgColor={bgColor}
@@ -23,6 +32,8 @@ const Button = ({ bgColor, txtColor, text, type, handleClick, allowed }) => {
       type={type}
       onClick={handleClick}
       allowed={allowed}
+      width={width}
+      height={height}
     >
       {text}
     </Wrapper>
@@ -41,6 +52,8 @@ const Wrapper = styled.button`
   font-weight: 700;
   font-size: 1.6vw; //24px // 1.6vw
   transition: all 0.25s;
+  width: ${({ width }) => width};
+  height: ${({ height }) => height};
   /* ${({ type }) => (type === 'hero' ? type.hero : type.normal)}; */
 
   :hover {
