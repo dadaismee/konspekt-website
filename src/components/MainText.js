@@ -24,8 +24,8 @@ const Wrapper = styled.div`
   gap: 12vh;
 
   @media (max-width: ${mediaQueries.tablet}) {
-    grid-template-columns: repeat(2, auto);
-    gap: 4vw;
+    display: block;
+    margin: auto;
   }
 `;
 
@@ -35,11 +35,12 @@ const Image = styled.img`
   width: 75%;
 
   @media (max-width: ${mediaQueries.tablet}) {
-    width: 42vw;
+    display: none;
   }
 
   @media (max-width: ${mediaQueries.phone}) {
     display: block;
+    margin-bottom: 6vw;
     width: auto;
   }
 `;
@@ -57,10 +58,12 @@ const Text = styled(bodyIntro)`
     color: ${colors.textBlack};
 
     @media (max-width: ${mediaQueries.tablet}) {
+      margin-bottom: 1.38vh;
       font-size: 20px;
     }
 
     @media (max-width: ${mediaQueries.phone}) {
+      margin-top: 1.38vh;
       font-size: 18px;
     }
   }

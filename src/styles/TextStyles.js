@@ -24,7 +24,7 @@ export const heading2 = styled.h2`
   font-size: 3.33vw; //48.87px;
   color: ${colors.textBlack};
 
-  @media (max-width: ${mediaQueries.phone}) {
+  @media (max-width: ${mediaQueries.tablet}) {
     font-size: 32px;
   }
 `;

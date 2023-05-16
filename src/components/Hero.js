@@ -31,10 +31,7 @@ const Hero = ({ taglineText, handleClick }) => {
             and use <span>toolchains</span> <br />
             for better writing <br />
           </Subtext>
-          <Button onClick={handleClick}>
-            Sign up
-            <br /> for early access
-          </Button>
+          <Button onClick={handleClick}>Notify me</Button>
         </TextWrapper>
       </Wrapper>
       <PatternImage />

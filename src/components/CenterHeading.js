@@ -93,8 +93,7 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(4, min-content);
   padding: var(--section-padding);
-  margin-top: 1.38vw;
-  margin-bottom: -0.69vw;
+  margin: 2.76vw 0 1.38vw 0;
   place-content: center;
 
   @media (max-width: ${mediaQueries.phone}) {

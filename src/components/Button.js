@@ -45,7 +45,8 @@ export default Button;
 const Wrapper = styled.button`
   background-color: ${({ bgColor }) => colors[`${bgColor}`]};
   border: none;
-  padding: 10px 20px;
+  /* padding: 10px 20px; */
+  padding: 1.3vw; //20px
   border-radius: 15px;
   text-align: center;
   color: ${({ txtColor }) => colors[`${txtColor}`]};
@@ -76,5 +77,6 @@ const Wrapper = styled.button`
 
   @media (max-width: ${mediaQueries.phone}) {
     font-size: 5vw;
+    width: ${({ width }) => width};
   }
 `;

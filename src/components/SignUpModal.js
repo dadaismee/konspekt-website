@@ -38,16 +38,14 @@ const SignUpModal = ({ closeModal }) => {
 
   return (
     <>
-      {isSubmitted && (
-        <Confetti
-          className='confetti'
-          width={window.innerWidth}
-          height={document.body.scrollHeight}
-          numberOfPieces={200}
-          colors={['#69BD7A', '#F97AA2', '#f1e363']}
-        />
-      )}
       <Wrapper>
+        {isSubmitted && (
+          <Confetti
+            numberOfPieces={500}
+            recycle={true}
+            colors={['#69BD7A', '#F97AA2', '#f1e363']}
+          />
+        )}
         <div id='image'>
           <StaticImage src='../../static/images/graphics/modalPattern.svg' />
         </div>
@@ -136,7 +134,6 @@ const Wrapper = styled.section`
   box-shadow: ${mainShadow};
   border-radius: 25px;
   z-index: 2;
-
   animation: ${opacityAnimation};
 
   @media screen and (max-width: ${mediaQueries.tablet}) {
@@ -152,10 +149,11 @@ const Wrapper = styled.section`
 
   @media screen and (max-width: ${mediaQueries.phone}) {
     display: grid;
-    grid-template-columns: repeat(2, auto);
-    top: 20vh;
+    grid-template-columns: repeat(3, auto);
+    top: 15vh;
     left: 3vh;
     right: 3vh;
+    height: 55%;
 
     #image {
       display: none;

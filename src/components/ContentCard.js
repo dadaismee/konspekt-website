@@ -21,7 +21,7 @@ const cardType = {
       display: 'flex',
       flexDirection: 'column',
       width: '39.7vw', //573px
-      height: '696px', //696px
+      height: '-webkit-fill-available', //696px
     },
   },
   whatChoose: {
@@ -106,6 +106,7 @@ const Wrapper = styled.div`
 const Image = {
   // maxHeight: '260px',
   width: '100%',
+  maxHeight: '100%',
   objectFit: 'cover',
   borderRadius: '25px',
 };

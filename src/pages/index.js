@@ -21,11 +21,20 @@ import 'swiper/css/pagination';
 
 const Index = ({ data }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const ref = useRef();
 
   const handleClick = () => {
     setModalIsOpen(!modalIsOpen);
   };
+
+  useEffect(() => {
+    const close = (e) => {
+      if (e.keyCode === 27) {
+        setModalIsOpen(false);
+      }
+    };
+    window.addEventListener('keydown', close);
+    return () => window.removeEventListener('keydown', close);
+  }, []);
 
   // function handleClickOutside(e) {
   //   if (!ref.current || ref.current.contains(e.target)) {
@@ -114,7 +123,7 @@ const Index = ({ data }) => {
             handleClick={handleClick}
             allowed={true}
             width='50vw'
-            height='10vh'
+            height='100%'
           />
         </div>
 
@@ -142,7 +151,7 @@ const Wrapper = styled.div`
   #swiper {
     display: none;
 
-    @media screen and (max-width: ${mediaQueries.phone}) {
+    @media screen and (max-width: ${mediaQueries.tablet}) {
       display: block;
     }
   }
@@ -153,7 +162,7 @@ const Wrapper = styled.div`
   }
 
   #image {
-    @media screen and (max-width: ${mediaQueries.phone}) {
+    @media screen and (max-width: ${mediaQueries.tablet}) {
       display: none;
     }
   }
